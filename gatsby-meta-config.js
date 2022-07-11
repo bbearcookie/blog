@@ -2,8 +2,8 @@ module.exports = {
   title: `bbearcookie`,
   description: `Blog posted about ...`,
   author: `bbearcookie`,
-  introduction: `I explain with words and code. I explain with words and code. I explain with words and code.`,
-  siteUrl: `https://gatsby-starter-bee.netlify.com`, // Your blog site url
+  introduction: `Frontend 개발자가 되려고 하는 컴퓨터공학과 학생입니다.\nReact 와 Express 같은 JS, TS 기반의 기술에 관심이 있습니다.`,
+  siteUrl: `https://bbearcookie.netlify.app`, // Your blog site url
   social: {
     twitter: ``, // Your Twitter account
     github: ``, // Your GitHub account

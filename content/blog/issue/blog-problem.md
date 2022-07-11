@@ -1,5 +1,5 @@
 ---
-title: 'Gatsby를 처음 써보고 생긴 문제들'
+title: '블로그 설정중 만났던 문제 기록'
 date: 2022-6-12 21:40:00
 category: 'issue'
 draft: false
@@ -55,7 +55,7 @@ Command failed with exit code 1: npm install
 이 문제를 해결하려고 이것저것 시도해봤는데, 노드의 버전이 원인으로 의심되었다.
 
 ## nvm 설치
-![](./images/nvm-setup.png)
+![](./images/blog-problem/nvm-setup.png)
 
 nvm(Node Version Manager)은 한 개발환경에서 노드 버전을 여러개 설치하고 그때그때 원하는 노드 버전을 선택해서 사용할 수 있는 기능이다.  
 나는 https://github.com/coreybutler/nvm-windows/releases 에서 nvm-setup.exe 를 다운받고 설치했고, 터미널 상에서 nvm 기능을 이용할 수 있었다.  
@@ -67,7 +67,7 @@ nvm(Node Version Manager)은 한 개발환경에서 노드 버전을 여러개 �
 nvm use &lt;version&gt;: 특정 버전의 노드 사용
 
 ## Gatsby 프로젝트 생성
-![](./images/gatsby-starter-library.png)
+![](./images/blog-problem/gatsby-starter-library.png)
 
 gatsby에는 기본적인 디자인이나 페이지 구성이 미리 되어있는 다양한 스타터 템플릿이 있었다. [Gatsby Starter Library](https://www.gatsbyjs.com/starters/) 에서 원하는 템플릿을 골라볼 수 있었는데 [gatsby-starter-bee](https://github.com/JaeYeopHan/gatsby-starter-bee) 나 [zoomkoding-gatsby-blog](https://github.com/zoomKoding/zoomkoding-gatsby-blog) 처럼 우리나라 개발자분들이 개인 블로그를 작성하시면서 기본적인 형태를 템플릿으로 만들어서 공유하시는 것도 있었다. 나는 그 중에서 gatsby-starter-bee가 개인적으로 마음에 들어서 적용하기로 한다.
 
@@ -90,16 +90,16 @@ content
 ## Netlify 에 배포하기
 Github 레포지토리에 프로젝트를 올렸으면 Netlify 에 배포할 수 있다.
 
-![](./images/netlify-add.png)
+![](./images/blog-problem/netlify-add.png)
 
 먼저 Netlify 에서 자신의 계정의 대쉬보드에 들어가 Add new site -> Import an existing project 버튼을 클릭한다.
 
-![](./images/netlify-provider.png)
+![](./images/blog-problem/netlify-provider.png)
 
 그 다음 프로젝트가 올라와있는 원격 저장소를 선택한다. 나는 Github를 사용했으니 Github를 선택한다. 
 그러면 배포할 레포지토리를 선택할 수 있다.
 
-![](./images/netlify-setting.png)
+![](./images/blog-problem/netlify-setting.png)
 
 여기서 Branch to deploy 에서 선택한 브랜치는
 Github 원격 레포지토리에서 해당 브랜치의 컨텐츠 내용이나 소스코드가 바뀌면
@@ -107,7 +107,7 @@ Github 원격 레포지토리에서 해당 브랜치의 컨텐츠 내용이나 �
 
 ## 빌드 문제 발생
 
-![](./images/netlify-failed.png)
+![](./images/blog-problem/netlify-failed.png)
 
 여러 설치와 기본 설정을 끝내고 이제 블로그를 볼 생각에 싱글벙글 했지만 빌드에 문제가 발생했다! 문제의 원인을 찾다가 아까 Gatsby 프로젝트를 생성할 때 노드 버전때문에 문제가 생겼던게 생각났고, Netlify 의 노드 버전을 설정하는 방법은 없을지 알아봤다. [여기](https://docs.netlify.com/configure-builds/manage-dependencies/)를 확인해보니 두 가지 방법이 있었다.
 > 1. Netlify 환경변수 설정에서 `NODE_VERSION` 정의하기
@@ -118,6 +118,6 @@ Github 원격 레포지토리에서 해당 브랜치의 컨텐츠 내용이나 �
 ## Netlify 노드 버전 설정
 [여기](https://docs.netlify.com/configure-builds/environment-variables/)에 Netlify 프로젝트의 환경변수를 설정하는 방법이 나와있다. 프로젝트의 대쉬보드에서 **Site settings > Build & deploy > Environment > Environment variables** 를 차례대로 내려가면 환경변수 설정을 할 수 있다.
 
-![](./images/netlify-version.png)
+![](./images/blog-problem/netlify-version.png)
 
 나는 14.17.3 버전으로 했다. 결과는 성공이다!

@@ -59,7 +59,7 @@ export const Bio = forwardRef((props, ref) => {
               </div>
             </div>
           </div>
-        </div>
+        </div >
       )
     }}
   />

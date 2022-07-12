@@ -15,7 +15,7 @@ Jekyll은 루비 기반으로 동작하는데 나는 루비를 한 번도 사용
 ## Gatsby 설치
 우선 Gatsby를 설치해야 했다. Gatsby로 만들어진 웹사이트를 빌드하고 개발 서버를 실행해보기 위해서는 gatsby-cli 모듈을 설치해야 했는데 이건 npm 모듈이기 때문에 Node.js를 먼저 설치해야한다.
 ```sh
-npm install -g gatsby-cli
+$ npm install -g gatsby-cli
 ```
 아래에 서술할 것이지만 모듈 설치 이후에는 `gatsby new` 명령어로 웹사이트를 생성해야 하는데 이 과정에서 문제가 발생했었다!
 
@@ -72,7 +72,7 @@ nvm use &lt;version&gt;: 특정 버전의 노드 사용
 gatsby에는 기본적인 디자인이나 페이지 구성이 미리 되어있는 다양한 스타터 템플릿이 있었다. [Gatsby Starter Library](https://www.gatsbyjs.com/starters/) 에서 원하는 템플릿을 골라볼 수 있었는데 [gatsby-starter-bee](https://github.com/JaeYeopHan/gatsby-starter-bee) 나 [zoomkoding-gatsby-blog](https://github.com/zoomKoding/zoomkoding-gatsby-blog) 처럼 우리나라 개발자분들이 개인 블로그를 작성하시면서 기본적인 형태를 템플릿으로 만들어서 공유하시는 것도 있었다. 나는 그 중에서 gatsby-starter-bee가 개인적으로 마음에 들어서 적용하기로 한다.
 
 ```sh
-gatsby new my-blog-starter https://github.com/JaeYeopHan/gatsby-starter-bee
+$ gatsby new my-blog-starter https://github.com/JaeYeopHan/gatsby-starter-bee
 ```
 
 프로젝트를 생성했으면, gatsby-starter-bee 같은 경우에는 gatsby-meta-config.js 파일에 기본적으로 자신의 정보를 기록할 수 있었다.

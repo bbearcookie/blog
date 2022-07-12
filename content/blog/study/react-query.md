@@ -58,13 +58,13 @@ inactive 상태로 일정시간 지난다면 더 이상 사용하지 않는 데�
 - 내부적으로 데이터를 캐시할 때 사용된다. 쿼리키가 같으면 같은 종류의 데이터로 인식한다.  
 - 문자열 혹은 배열 형태로 값을 줄 수 있는데 배열 형태인 경우 안에 들어있는 값이 같아도 순서가 다르면 서로 다른 쿼리키로 인식한다.  
 
-```
+```ts
 useQuery(['todos', status, page], ...)
 useQuery(['todos', page, status], ...)
 useQuery(['todos', undefined, page, status], ...)
 ```
 > 예를 들어 위 키는 모두 다른 키이다.
-```
+```ts
 useQuery(['todos', { status, page }], ...)
 useQuery(['todos', { page, status }], ...)
 useQuery(['todos', { page, status, other: undefined }], ...)
@@ -128,7 +128,7 @@ false: 데이터가 마운트되어도 데이터를 패칭하지 않게 설정�
 
 ### 예제  
 > ↓ TestForm.tsx 
-```
+```ts
 import React, { useState, useMemo, useCallback } from 'react';
 import { useQueryClient, useMutation } from 'react-query';
 import * as testApi from '@api/testApi';
@@ -184,7 +184,7 @@ function TestForm({}) {
 ``` 
 
 > ↓ @api/testApi.tsx 
-```
+```ts
 import axios from "axios";
 export const postTestData = (data: object) => axios({
   method: 'post',
@@ -194,7 +194,7 @@ export const postTestData = (data: object) => axios({
 ```
 
 > ↓ @util/queryKey.tsx
-```
+```ts
 export const testListKeys = {
   all: ['todos'] as const,
   detail: (id: number) => [...testListKeys.all, id]

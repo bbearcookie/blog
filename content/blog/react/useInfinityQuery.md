@@ -1,7 +1,7 @@
 ---
 title: 'useInfinityQuery로 무한스크롤 만들기'
 date: 2022-08-04 18:20:00
-category: 'study'
+category: 'react'
 draft: false
 ---
 

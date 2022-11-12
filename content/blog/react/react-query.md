@@ -1,7 +1,7 @@
 ---
 title: 'Server State를 쉽게 다루게 해주는 react-query'
 date: 2022-07-11 18:20:00
-category: 'study'
+category: 'react'
 draft: false
 ---
 

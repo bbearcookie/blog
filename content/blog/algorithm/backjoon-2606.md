@@ -1,6 +1,6 @@
 ---
 title: '[백준 2606] 바이러스'
-date: 2023-02-24 17:45:00
+date: 2023-01-24 17:45:00
 category: 'algorithm'
 draft: false
 ---

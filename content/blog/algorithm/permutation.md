@@ -5,6 +5,13 @@ category: 'algorithm'
 draft: false
 ---
 
+# 내용 업데이트
+[순열과 조합](https://bbearcookie.netlify.app/algorithm/permutation-and-combination/)  
+현재 포스트와 유사한 내용을 다시 새로운 글로 작성하였음.
+
+
+## 
+
 ![](./images/permutation/main.png)
 
 알고리즘 코딩 문제를 풀다보면 모든 경우의 수마다 한번씩 순회하여 특정한 로직을 수행해야 하는 경우가 있다.  
@@ -309,5 +316,5 @@ dab
 
 ## 이미지 출처 및 참고
 [Permutation via Backtracking](https://medium.com/@guguru/permutation-algorithm-via-backtracking-39fc1bf07a33)  
-[순열 구현하기](https://ansohxxn.github.io/algorithm/permutation/)
-[프로그래머스 소수 찾기 문제](https://school.programmers.co.kr/learn/courses/30/lessons/42839)
+[순열 구현하기](https://ansohxxn.github.io/algorithm/permutation/)  
+[프로그래머스 소수 찾기 문제](https://school.programmers.co.kr/learn/courses/30/lessons/42839)  

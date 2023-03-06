@@ -7,6 +7,7 @@ draft: false
 
 ## 함수(Function)
 함수는 <b style="color: red">일정한 동작을 수행하는 코드들의 집합</b>이다.  
+자바스크립트에서의 함수는 `Function` 객체이다.
 
 ### 일급객체(First-Class Object)
 자바스크립트에서의 함수는 일급객체이기 때문에 다음과 같은 특징을 가지고 있다.
@@ -88,6 +89,14 @@ func1(); // function 키워드
 func2(); // 화살표 함수
 ```
 
+### Function 생성자
+자바스크립트에서는 함수도 객체이기 때문에 `new` 연산자로 `Function` 객체를 생성하는 방법이다.  
+다만 일부 자바스크립트 최적화를 적용할 수 없으며 권장하지 않는 방법이라고 한다.  
+```js
+const func = new Function("console.log('안녕하세요')");
+func(); // 안녕하세요
+```
+
 ## 익명 함수(Anonymous Function)
 <b>함수 선언 방식</b>으로는 정의할 때에는 반드시 즉시 실행 함수(IIFE, Immediately-Invoked Function Expression) 여야 한다.  
 <b>함수 표현식 방식</b>으로 정의할 때에는 변수의 이름을 지정해주므로 함수의 이름은 지정하지 않아도 상관없다.
@@ -103,3 +112,6 @@ const func = function() {
 
 func();
 ```
+
+## 참고
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions

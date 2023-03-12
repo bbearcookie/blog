@@ -1,7 +1,7 @@
 ---
 title: '[백준 1149] RGB거리'
 date: 2023-02-14 19:35:00
-category: 'algorithm'
+category: 'backjoon'
 draft: false
 ---
 

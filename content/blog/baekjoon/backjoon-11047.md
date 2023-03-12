@@ -1,7 +1,7 @@
 ---
 title: '[백준 11047] 동전 0'
 date: 2023-02-26 18:13:00
-category: 'algorithm'
+category: 'backjoon'
 draft: false
 ---
 

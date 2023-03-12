@@ -1,7 +1,7 @@
 ---
 title: '[백준 2667] 단지번호붙이기'
 date: 2023-02-11 17:55:00
-category: 'algorithm'
+category: 'backjoon'
 draft: false
 ---
 

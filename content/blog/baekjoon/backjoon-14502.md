@@ -1,7 +1,7 @@
 ---
 title: '[백준 14502] 연구소'
 date: 2023-01-31 21:28:00
-category: 'algorithm'
+category: 'backjoon'
 draft: false
 ---
 

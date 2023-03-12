@@ -1,7 +1,7 @@
 ---
 title: '[백준 1920] 수 찾기'
 date: 2023-02-12 18:25:00
-category: 'algorithm'
+category: 'backjoon'
 draft: false
 ---
 

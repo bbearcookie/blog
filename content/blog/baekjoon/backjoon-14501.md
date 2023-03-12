@@ -1,7 +1,7 @@
 ---
 title: '[백준 14501] 퇴사'
 date: 2023-03-08 21:30:00
-category: 'algorithm'
+category: 'backjoon'
 draft: false
 ---
 

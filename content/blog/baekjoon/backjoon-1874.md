@@ -1,7 +1,7 @@
 ---
 title: '[백준 1874] 스택 수열'
 date: 2023-02-12 17:15:00
-category: 'algorithm'
+category: 'backjoon'
 draft: false
 ---
 

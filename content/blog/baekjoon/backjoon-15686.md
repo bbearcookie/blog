@@ -1,7 +1,7 @@
 ---
 title: '[백준 15686] 치킨 배달'
 date: 2023-03-07 15:17:00
-category: 'algorithm'
+category: 'backjoon'
 draft: false
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: '[백준 15661] 링크와 스타트'
 date: 2023-03-07 17:00:00
-category: 'algorithm'
+category: 'backjoon'
 draft: false
 ---
 

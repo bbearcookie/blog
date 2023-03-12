@@ -1,7 +1,7 @@
 ---
 title: '[백준 10816] 숫자 카드 2'
 date: 2023-02-13 18:00:00
-category: 'algorithm'
+category: 'backjoon'
 draft: false
 ---
 

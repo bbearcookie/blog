@@ -1,7 +1,7 @@
 ---
 title: '[백준 11399] ATM'
 date: 2023-02-26 18:23:00
-category: 'algorithm'
+category: 'backjoon'
 draft: false
 ---
 

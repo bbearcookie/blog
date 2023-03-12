@@ -1,7 +1,7 @@
 ---
 title: '[백준 1912] 연속합'
 date: 2023-02-17 22:32:00
-category: 'algorithm'
+category: 'backjoon'
 draft: false
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: '[백준 11724] 연결 요소의 개수'
 date: 2023-02-11 17:10:00
-category: 'algorithm'
+category: 'backjoon'
 draft: false
 ---
 

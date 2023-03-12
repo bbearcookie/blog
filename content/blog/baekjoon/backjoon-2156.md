@@ -1,7 +1,7 @@
 ---
 title: '[백준 2156] 포도주 시식'
 date: 2023-02-21 16:00:00
-category: 'algorithm'
+category: 'backjoon'
 draft: false
 ---
 

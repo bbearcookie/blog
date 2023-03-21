@@ -1,255 +1,160 @@
-<div align="center">
+<h1 align="center">
+    gatsby-starter-hoodie
+</h1>
 
-  <img src="./assets/gatsby-starter-bee.png" width="360px" />
+<h4 align="center">
+  A gatsby starter developed for developers to build tech blogs.
+</h4>
 
-</div>
+![](mockup.png)
 
-[![Financial Contributors on Open Collective](https://opencollective.com/gatsby-starter-bee/all/badge.svg?label=financial+contributors)](https://opencollective.com/gatsby-starter-bee) [![Greenkeeper badge](https://badges.greenkeeper.io/JaeYeopHan/gatsby-starter-bee.svg)](https://greenkeeper.io/)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/JaeYeopHan/gatsby-starter-bee.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/JaeYeopHan/gatsby-starter-bee/alerts/)
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/4b1962ce-6206-4d8f-9516-63be92294198/deploy-status)](https://app.netlify.com/sites/gatsby-starter-bee/deploys)
+## 🚀 About gatsby-starter-hoodie
 
-<a href="https://twitter.com/JbeeLjyhanll">
-<img alt="Twitter: JbeeLjyhanll" src="https://img.shields.io/twitter/follow/JbeeLjyhanll.svg?style=social" target="_blank" />
-</a>
+[한국어 문서 바로가기](https://github.com/devHudi/gatsby-starter-hoodie/blob/develop/README-kr.md)
 
-[한국어🇰🇷](./README.ko.md)
+gatsby-starter-hoodie is a gatsby starter created for writing tech blogs. Markdown, Code Highlighting in various programming languages, and Katex syntax are supported. Also, you can easily categorize articles into tags and series.
 
-![screenshot](./assets/screenshot.png)
+Start your blog with a neatly designed gatsby-starter-hoodie that supports dark mode.
 
-In this template...
+This project inspired by [velog](https://velog.io).
 
-- 💄 Code highlight with Fira Code font
-- 🧙 CLI Tool
-- 😄 Emoji (emojione)
-- 🗣 Social share feature (Twitter, Facebook)
-- 💬 Comment feature (disqus, utterances)
-- ☕ 'Buy me a coffee' service
-- 🤖 GA
-- ⭐ Enhance UX
-- ⚙ Configurable
+## [Live Demo](https://devHudi.github.io/gatsby-starter-hoodie)
 
-> [About this Template](https://www.gatsbyjs.org/starters/JaeYeopHan/gatsby-starter-bee/)
+## Features
 
-## Demo
+- Markdown
+- Code Highlighting
+- Katex Syntax
+- Dark Mode (Responsive to the settings of the OS)
+- Tag Categoriazation
+- Series Categorization
+- Responsive Web
+- SEO
+- Utterance (Comment widget)
 
-- [Default Theme](https://gatsby-starter-bee.netlify.com/)
+Getting started your blog with gatsby-starter-hoodie by following steps below. It's very easy 😉.
 
-<details>
-  <summary>Use case</summary>
-  <p>
-    <img src="./assets/demos.png" alt="demo-image">
-    <ul>
-      <li>JBEE.io: https://jbee.io</li>
-      <li>Rinae's devlog: https://rinae.dev/</li>
-      <li>Seungdols Company: https://seungdols.dev/</li>
-      <li>Kooku's log: https://kooku.netlify.com/</li>
-      <li>SOSOLOG: https://so-so.dev/</li>
-      <li>delivan.dev: https://delivan.dev/</li>
-      <li>Jungin's blog: https://jungin.netlify.com/</li>
-      <li>Zero's blog: https://awesomezero.com/</li>
-      <li>Jonathan's blog: https://www.learningsomethingnew.com/</li>
-      <li>@deveely-log: https://deveely-log.netlify.com/</li>
-      <li>Hanul's blog: https://hanul-dev.netlify.com/</li>
-      <li>Hoons Blog: https://hoons-up.netlify.com/</li>
-      <li>JWN.cool: https://jwn.cool</li>
-      <li>ugaemi's dev note: https://ugaemi.github.io</li>
-      <li>Minsu's Dev Log: https://alstn2468.github.io/</li>
-      <li>Yungi's Dev Blog: https://yungis.dev/</li>
-      <li>< Taenylog />: https://taeny.dev/</li>
-      <li>brouk's devlog: https://brouk-devlog.netlify.com/</li>
-      <li>CoodingPenguin's Repository: https://cooding-penguin.netlify.com/</li>
-      <li>Garima's Tech Blog: https://garimasingh.netlify.app/ </li>
-      <li>DevRappers.dev: https://devrappers.dev/</li>
-      <li>Let's doodle: https://duduling-blog.netlify.app/</li>
-      <li>noopy.dev: https://noopy.dev/</li>
-      <li>Hong_Devlog: https://hong-dev.github.io/</li>
-      <li>samsara-ku's devlog: https://samsara-ku.dev/</li>
-      <li>muse.kim: https://muse.kim/</li>
-      <li>cereme.dev: https://cereme.dev</li>
-      <li>taekki.dev: https://taekki.dev</li>
-      <li>kkh913's Developer Blog: https://kkh913.github.io</li>
-      <li>Merrily, Code: https://merrily-code.netlify.app/</li>
-      <li>jeeneee's devlog: https://jeeneee.dev</li>
-      <li>Noah's devlog: https://noah0316.github.io/</li>
-      <li>bobs log: https://undefine.me</li>
-      <li>irosyadi: https://irosyadi.netlify.app</li>
-      <li>yujolog: https://yujo11.github.io/</li>
-      <li>hexdrinker's devlog: https://hexdrinker.dev</li>
-      <li>gparkki.io: https://gparkkii.github.io/</li>
-      <li>BO.LOG: https://b5bo.github.io</li>
-    </ul>
-  </p>
-</details>
+## 1. Create a Gatsby site
 
-> If you're using this template, Please Pull Request for `Use case`!
+> Make sure you have **node.js** and **gatsby-cli** installed on your computer.
 
-## 😎 Quick Start
-
-### 1. Create a Gatsby site
-
-```sh
-# create a new Gatsby site using the blog starter
-npx gatsby new my-blog-starter https://github.com/JaeYeopHan/gatsby-starter-bee
+```
+$ npx gatsby new my-hoodie-blog https://github.com/devHudi/gatsby-starter-hoodie
 ```
 
-> If you are not using `npx`, following [Gatsby Getting Started](https://www.gatsbyjs.org/docs/quick-start)
+## 2. Start dev server
 
-```sh
-npm install -g gatsby-cli
-gatsby new my-blog-starter https://github.com/JaeYeopHan/gatsby-starter-bee
+```
+$ cd my-hoodie-blog
+$ npm run start
 ```
 
-### 2. Start developing
+Now you can access to your blog at localhost:8000.
 
-```sh
-cd my-blog-starter/
-npm start
-# open localhost:8000
+## 3. Create your own Github repository
+
+Utterance comment widget is based on **Github issue system**. So you need your own GitHub repository. Also, if you want to publish your blog through Github Pages or Netlify, the Github Repository is a necessary.
+
+If you don't know how to create a GitHub repository, follow the [official GitHub documentation](https://docs.github.com/en/github/getting-started-with-github/create-a-repo).
+
+### Add remote repository
+
+```
+git remote add origin https://github.com/{YOUR_GITHUB_NAME}/{YOUR_REPOSITORY_NAME}
 ```
 
-### 3. Add your content
+## 4. Write blog-config.js
 
-You can write...
-
-- contents to blog in `content/blog` directory.
-- resume `content/__about` directory.
-
-> With markdown syntax and some meta data
-
-#### Support script for creating new post
-
-![cli-tool-example](assets/cli-tool-example.gif)
-
-```sh
-npm run post
-```
-
-👉 Use **gatsby-post-gen** (<https://github.com/JaeYeopHan/gatsby-post-gen>)
-
-### 4. Fix meta data
-
-You can fix meta data of blog in `/gatsby-meta-config.js` file.
-
-### 5. Publish with [netlify](https://netlify.com)
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/JaeYeopHab/gatsby-starter-bee)
-
-:bulb: if you want to deploy github pages, add following script to package.json
-
-```json
-"scripts": {
-    "deploy": "gatsby build && gh-pages -d public -b master -r 'git@github.com:${your github id}/${github page name}.github.io.git'"
+```javascript
+module.exports = {
+  title: "MY BLOG",
+  description: "Hello, This is my blog",
+  author: "YOUR NAME",
+  siteUrl: "https://myblog.com",
+  links: {
+    github: "https://github.com",
+    facebook: "https://www.facebook.com",
+    instagram: "https://www.instagram.com",
+    etc: "https://www.google.com/",
+  },
+  utterances: {
+    repo: "{YOUR_GITHUB_NAME}/{YOUR_REPOSITORY_NAME}",
+    type: "pathname",
+  },
 }
 ```
 
-## 🧐 Customize
+gatsby-starter-hoodie provides a configuration file called `blog-config.js`. In this file, you can configure blog, biography (profile), and utterance.
 
-### ⚙ Gatsby config
+Configure `blog-config.js` to suit your blog. However, it is recommended not to modify `utterances.type`.
 
-```sh
-/root
-├── gatsby-browser.js // font, polyfill, onClientRender ...
-├── gatsby-config.js // Gatsby config
-├── gatsby-meta-config.js // Template meta config
-└── gatsby-node.js // Gatsby Node config
+## 5. Add your content
+
+Markdown content is in `contents/posts`. You can write and add your articles. [Click here](https://devHudi.github.io/gatsby-starter-hoodie/writing-guide) to see the detail writing guide.
+
+## 6. Deploy your blog
+
+### 6-1 via Netlify
+
+<a href="https://app.netlify.com/start/deploy?repository=https://github.com/alxshelepenok/gatsby-starter-lumen" target="_blank"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
+
+Follow the Connecting to Netlify steps in [A Step-by-Step Guide: Gatsby on Netlify](https://www.netlify.com/blog/2016/02/24/a-step-by-step-guide-gatsby-on-netlify/). It's not difficult.
+
+If you connect the github repository using Netlify, it is automatically distributed whenever you push it, so it is convenient.
+
+### 6-2. via Github Pages
+
+#### Case 1
+
+If the repository name is in the form of `{YOUR_GITHUB_NAME} .github.io`, run it below.
+
+```
+$ npm run deploy-gh
 ```
 
-### ⛑ Structure
+#### Case 2
 
-```sh
-src
-├── components // Just component with styling
-├── layout // home, post layout
-├── pages // routing except post: /(home), /about
-├── styles
-│   ├── code.scss
-│   ├── dark-theme.scss
-│   ├── light-theme.scss
-│   └── variables.scss
-└── templates
-    ├── blog-post.js
-    └── home.js
+If the repository name is not in the form of `{YOUR_GITHUB_NAME} .github.io`, run it below.
+
+```
+$ npm run deploy-gh-prefix-paths
 ```
 
-### 🎨 Style
+In the above case, you need to change `pathPrefix` in `gatsby-config.js` to your repository name.
 
-You can customize color in `src/styles` directory.
+### 6-3. other platforms
 
-```sh
-src/styles
-├── code.scss
-├── dark-theme.scss
-├── light-theme.scss
-└── variables.scss
+```
+$ npm run build
 ```
 
-### 🍭 Tips (You can change...)
+You can build the gatsby website with the command above. The build output is created in the `/public` directory. Deploy the `/public` directory using the command for the platform you want to deploy.
 
-- Profile image! (replace file in `/content/assets/profile.png`)
-- Favicon image! (replace file in `/content/assets/felog.png`)
-- Header gradient! (\$theme-gradient `/styles/variables.scss`)
-- Please set it up for update to the domain distributed in 'robots.txt'! (replace part `https://your-blog.netlify.app` of `gatsby-config.js`)
-- Utterances repository! (replace repository address in `/gatsby-meta-config.js`)
-  - ⚠️ Please check, this guide(<https://utteranc.es/>)
+## 7. Cutomize
 
-## ☕ Like it?
+### Project Structure
 
-<a href="https://www.buymeacoffee.com/jbee" target="_blank">
-  <img src="https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" >
-</a>
+You can customize your own gatsby-starter-hoodie by referring to the following file structure 🙊.
 
-## 🤔 If
-
-If you are currently writing in the Medium, consider migration with [medium-to-own-blog](https://github.com/mathieudutour/medium-to-own-blog)!
-
-## :bug: Bug reporting
-
-[Issue](https://github.com/JaeYeopHan/gatsby-starter-bee/issues)
-
-## 🎁 Contributing
-
-[Contributing guide](./CONTRIBUTING.md)
-
-## Contributors
-
-### Code Contributors
-
-This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
-
-<a href="https://github.com/JaeYeopHan/gatsby-starter-bee/graphs/contributors">
-<img src="https://opencollective.com/gatsby-starter-bee/contributors.svg?width=890&button=false" />
-</a>
-
-### Financial Contributors
-
-Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/gatsby-starter-bee/contribute)]
-
-#### Individuals
-
-<a href="https://opencollective.com/gatsby-starter-bee"><img src="https://opencollective.com/gatsby-starter-bee/individuals.svg?width=890"></a>
-
-#### Organizations
-
-Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/gatsby-starter-bee/contribute)]
-
-<a href="https://opencollective.com/gatsby-starter-bee/organization/0/website"><img src="https://opencollective.com/gatsby-starter-bee/organization/0/avatar.svg"></a>
-<a href="https://opencollective.com/gatsby-starter-bee/organization/1/website"><img src="https://opencollective.com/gatsby-starter-bee/organization/1/avatar.svg"></a>
-<a href="https://opencollective.com/gatsby-starter-bee/organization/2/website"><img src="https://opencollective.com/gatsby-starter-bee/organization/2/avatar.svg"></a>
-<a href="https://opencollective.com/gatsby-starter-bee/organization/3/website"><img src="https://opencollective.com/gatsby-starter-bee/organization/3/avatar.svg"></a>
-<a href="https://opencollective.com/gatsby-starter-bee/organization/4/website"><img src="https://opencollective.com/gatsby-starter-bee/organization/4/avatar.svg"></a>
-<a href="https://opencollective.com/gatsby-starter-bee/organization/5/website"><img src="https://opencollective.com/gatsby-starter-bee/organization/5/avatar.svg"></a>
-<a href="https://opencollective.com/gatsby-starter-bee/organization/6/website"><img src="https://opencollective.com/gatsby-starter-bee/organization/6/avatar.svg"></a>
-<a href="https://opencollective.com/gatsby-starter-bee/organization/7/website"><img src="https://opencollective.com/gatsby-starter-bee/organization/7/avatar.svg"></a>
-<a href="https://opencollective.com/gatsby-starter-bee/organization/8/website"><img src="https://opencollective.com/gatsby-starter-bee/organization/8/avatar.svg"></a>
-<a href="https://opencollective.com/gatsby-starter-bee/organization/9/website"><img src="https://opencollective.com/gatsby-starter-bee/organization/9/avatar.svg"></a>
-
-## LICENSE
-
-[MIT](./LICENSE)
-
-<div align="center">
-
-<sub><sup>Project by <a href="https://github.com/JaeYeopHan">@Jbee</a></sup></sub><small>✌</small>
-
-</div>
+```
+├── node_modules
+├── contents
+│   └── posts // your articles are here
+├── public // build outputs are here
+└── src
+    ├── assets
+    │   └── theme // theme config is here
+    ├── components
+    │   └── Article
+    │       └── Body
+    │           └── StyledMarkdown
+    │               └── index.jsx // markdown styles are here
+    │   ...
+    ├── fonts // webfonts are here
+    ├── hooks
+    ├── images
+    ├── pages // page components are here
+    ├── reducers
+    ├── templates // post components are here
+    └── utils
+```

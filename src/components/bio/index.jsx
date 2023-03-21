@@ -1,94 +1,122 @@
-import React, { forwardRef } from 'react'
-import { StaticQuery, graphql, Link } from 'gatsby'
-import Image from 'gatsby-image'
+import React from "react"
+import styled from "styled-components"
 
-import './index.scss'
+import {
+  FaGithub,
+  FaKaggle,
+  FaFacebook,
+  FaLinkedin,
+  FaInstagram,
+  FaLink,
+  FaEnvelope,
+} from "react-icons/fa"
 
-export const Bio = forwardRef((props, ref) => {
-  return <StaticQuery
-    query={bioQuery}
-    render={data => {
-      const { author, social, introduction } = data.site.siteMetadata
+import { siteUrl, description, author, links } from "../../../blog-config"
 
-      return (
-        <div ref={ref} className="bio">
-          <div className="author">
-            <div className="author-description">
-              <Image
-                className="author-image"
-                fixed={data.avatar.childImageSharp.fixed}
-                alt={author}
-                style={{
-                  borderRadius: `100%`,
-                }}
-              />
-              <div className="author-name">
-                <span className="author-name-prefix">Written by</span>
-                <Link to={'/about'} className="author-name-content">
-                  <span>@{author}</span>
-                </Link>
-                <div className="author-introduction">{introduction}</div>
-                <p className="author-socials">
-                  {social.instagram && (
-                    <a href={`https://www.instagram.com/${social.instagram}`}>
-                      Instagram
-                    </a>
-                  )}
-                  {social.github && (
-                    <a href={`https://github.com/${social.github}`}>GitHub</a>
-                  )}
-                  {social.medium && (
-                    <a href={`https://medium.com/${social.medium}`}>Medium</a>
-                  )}
-                  {social.twitter && (
-                    <a href={`https://twitter.com/${social.twitter}`}>
-                      Twitter
-                    </a>
-                  )}
-                  {social.facebook && (
-                    <a href={`https://www.facebook.com/${social.facebook}`}>
-                      Facebook
-                    </a>
-                  )}
-                  {social.linkedin && (
-                    <a href={`https://www.linkedin.com/in/${social.linkedin}/`}>
-                      LinkedIn
-                    </a>
-                  )}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div >
-      )
-    }}
-  />
-})
+const BioWrapper = styled.div`
+  display: flex;
+  align-items: center;
 
-const bioQuery = graphql`
-  query BioQuery {
-    avatar: file(absolutePath: { regex: "/profile.png/" }) {
-      childImageSharp {
-        fixed(width: 72, height: 72) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    site {
-      siteMetadata {
-        author
-        introduction
-        social {
-          twitter
-          github
-          medium
-          facebook
-          linkedin
-          instagram
-        }
-      }
-    }
+  @media (max-width: 768px) {
+    padding: 0 15px;
   }
 `
+
+const profileImageRoot =
+  typeof window !== "undefined" && window.location.host === "localhost:8000"
+    ? "http://localhost:8000"
+    : siteUrl
+
+const Profile = styled.div`
+  flex: 0 0 auto;
+  margin-right: 16px;
+  width: 128px;
+  height: 128px;
+  border-radius: 999px;
+  background-image: url(${profileImageRoot}/profile.png);
+  background-size: cover;
+  background-position: center;
+`
+
+const Author = styled.div`
+  margin-bottom: 4.8px;
+  font-size: 24px;
+  font-weight: 700;
+  color: ${props => props.theme.colors.text};
+`
+
+const Description = styled.div`
+  margin-bottom: 11.2px;
+  line-height: 1.5;
+  font-size: 16px;
+  color: ${props => props.theme.colors.secondaryText};
+`
+
+const LinksWrapper = styled.div`
+  & a {
+    margin-right: 9.6px;
+  }
+
+  & svg {
+    width: 25.6px;
+    height: 25.6px;
+    cursor: pointer;
+  }
+
+  & svg path {
+    fill: ${props => props.theme.colors.icon};
+    transition: fill 0.3s;
+  }
+
+  & a:hover svg path {
+    fill: ${props => props.theme.colors.text};
+  }
+`
+
+const Link = ({ link, children }) => {
+  if (!link) return null
+  return (
+    <a href={link} target="_blank" rel="noreferrer">
+      {children}
+    </a>
+  )
+}
+
+const Bio = () => {
+  const { github, kaggle, instagram, facebook, linkedIn, email, etc } = links
+
+  return (
+    <BioWrapper id="bio">
+      <Profile />
+      <div>
+        <Author>@{author}</Author>
+        <Description>{description}</Description>
+        <LinksWrapper>
+          <Link link={github}>
+            <FaGithub />
+          </Link>
+          <Link link={kaggle}>
+            <FaKaggle />
+          </Link>
+          <Link link={instagram}>
+            <FaInstagram />
+          </Link>
+          <Link link={facebook}>
+            <FaFacebook />
+          </Link>
+          <Link link={linkedIn}>
+            <FaLinkedin />
+          </Link>
+          <Link link={email}>
+            <FaEnvelope />
+          </Link>
+          <Link link={etc}>
+            <FaLink />
+          </Link>
+        </LinksWrapper>
+      </div>
+    </BioWrapper>
+  )
+}
 
 export default Bio

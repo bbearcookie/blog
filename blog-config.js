@@ -1,14 +1,14 @@
 module.exports = {
-  title: "hoodie",
-  description: "Hello :) I'm Hudi who developed gatsby-starter-hoodie theme.",
-  author: "Hudi",
-  siteUrl: "https://devhudi.github.io/gatsby-starter-hoodie/",
+  title: "bbearcookie",
+  description: "Frontend Developer",
+  author: "bbearcookie",
+  siteUrl: "https://bbearcookie.netlify.app/",
   links: {
-    github: "https://github.com/devHudi",
+    github: "https://github.com/bbearcookie",
     linkedIn: "https://linkedin.com",
     facebook: "https://www.facebook.com",
     instagram: "https://www.instagram.com",
-    email: "mailto:devhudi@gmail.com",
+    email: "mailto:grabiticlaris@gmail.com",
   },
   utterances: {
     repo: "devHudi/gatsby-starter-hoodie",

@@ -9,8 +9,8 @@ import { utterances } from "../../../../blog-config"
 
 import MDSpinner from "react-md-spinner"
 
-import Divider from "components/Divider"
-import Bio from "components/Bio"
+import Divider from "../../../components/Divider"
+import Bio from "../../../components/Bio"
 
 const ArticleButtonContainer = styled.div`
   display: flex;

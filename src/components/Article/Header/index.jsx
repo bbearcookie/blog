@@ -3,8 +3,8 @@ import styled from "styled-components"
 
 import { author } from "../../../../blog-config"
 
-import Divider from "components/Divider"
-import TagList from "components/TagList"
+import Divider from "../../../components/Divider"
+import TagList from "../../../components/TagList"
 
 const Wrapper = styled.div`
   margin-top: 32px;

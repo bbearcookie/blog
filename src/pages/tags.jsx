@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react"
 import _ from "lodash"
 import styled from "styled-components"
-import SEO from "components/SEO"
+import SEO from "../components/SEO"
 import filter from "lodash/filter"
 
 import { graphql, navigate } from "gatsby"
 
 import queryString from "query-string"
 
-import Layout from "components/Layout"
-import Title from "components/Title"
-import TagList from "components/TagList"
-import PostList from "components/PostList"
-import VerticleSpace from "components/VerticalSpace"
+import Layout from "../components/Layout"
+import Title from "../components/Title"
+import TagList from "../components/TagList"
+import PostList from "../components/PostList"
+import VerticleSpace from "../components/VerticalSpace"
 
 import { title, description, siteUrl } from "../../blog-config"
 

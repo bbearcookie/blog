@@ -1,13 +1,13 @@
 import React, { useState, useCallback } from "react"
 import styled from "styled-components"
-import SEO from "components/SEO"
+import SEO from "../components/SEO"
 import { graphql } from "gatsby"
 
-import Layout from "components/Layout"
-import PostList from "components/PostList"
-import TextField from "components/TextField"
-import Title from "components/Title"
-import VerticalSpace from "components/VerticalSpace"
+import Layout from "../components/Layout"
+import PostList from "../components/PostList"
+import TextField from "../components/TextField"
+import Title from "../components/Title"
+import VerticalSpace from "../components/VerticalSpace"
 
 import { title, description, siteUrl } from "../../blog-config"
 

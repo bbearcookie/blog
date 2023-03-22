@@ -6,7 +6,7 @@ import { setLight, setDark } from "reducers/theme"
 
 import { light, dark } from "assets/theme"
 
-import GlobalStyles from "components/GlobalStyles"
+import GlobalStyles from "../../components/GlobalStyles"
 
 import Header from "./Header"
 import Body from "./Body"

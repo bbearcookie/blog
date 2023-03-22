@@ -4,9 +4,9 @@ import _ from "lodash"
 
 import { Link } from "gatsby"
 
-import Title from "components/Title"
-import Divider from "components/Divider"
-import TagList from "components/TagList"
+import Title from "../../components/Title"
+import Divider from "../../components/Divider"
+import TagList from "../../components/TagList"
 
 const PostListWrapper = styled.div`
   @media (max-width: 768px) {

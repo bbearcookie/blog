@@ -1,15 +1,15 @@
 import React from "react"
 import { flow, map, groupBy, sortBy, filter, reverse } from "lodash/fp"
 import styled from "styled-components"
-import SEO from "../components/SEO"
+import SEO from "components/SEO"
 
 import { graphql } from "gatsby"
 
-import Layout from "../components/Layout"
-import Title from "../components/Title"
-import SeriesList from "../components/SeriesList"
-import VerticleSpace from "../components/VerticalSpace"
-import NoContent from "../components/NoContent"
+import Layout from "components/Layout"
+import Title from "components/Title"
+import SeriesList from "components/SeriesList"
+import VerticleSpace from "components/VerticalSpace"
+import NoContent from "components/NoContent"
 
 import { title, description, siteUrl } from "../../blog-config"
 

@@ -5,7 +5,7 @@ update: 2023-03-24
 tags:
   - development
   - express
-series: "Express 서버로 작성한 프로젝트 코드 구조 리팩토링"
+series: "Express를 사용한 프로젝트 코드 구조 리팩토링"
 ---
 
 사이드 프로젝트의 서버 사이드에서 `Express` 프레임워크를 사용하면서 나는 `express` 객체에 대한 `cookie-parser`, `body-parser` 그리고 `CORS` 정책에 관련한 설정 등을 하나의 파일인 `@config/express.ts`에서 하고, 서버에 오는 요청에 따라 적절한 미들웨어를 동작하게 이어주는 설정은 `@config/router.ts` 에서 하게끔 만들어 놓은 상태였다.  

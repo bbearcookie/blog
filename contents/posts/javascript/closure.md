@@ -4,6 +4,7 @@ date: 2023-03-01
 update: 2023-03-01
 tags:
   - JavaScript
+  - Closure
 ---
 
 ## 클로저(Closure)란?

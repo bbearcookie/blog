@@ -4,6 +4,7 @@ date: 2023-03-03
 update: 2023-03-03
 tags:
   - JavaScript
+  - Hoisting
 ---
 
 ## 변수의 선언, 초기화, 할당

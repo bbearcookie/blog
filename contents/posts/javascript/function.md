@@ -4,6 +4,7 @@ date: 2023-03-06
 update: 2023-03-06
 tags:
   - JavaScript
+  - Function
 ---
 
 ## 함수(Function)

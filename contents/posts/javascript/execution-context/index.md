@@ -4,6 +4,7 @@ date: 2023-02-28
 update: 2023-02-28
 tags:
   - JavaScript
+  - Execution-Context
 ---
 
 ## 실행 컨텍스트(Execution Context)란?

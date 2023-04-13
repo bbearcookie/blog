@@ -4,6 +4,7 @@ date: 2023-03-11
 update: 2023-03-11
 tags:
   - JavaScript
+  - Prototype
 ---
 
 자바스크립트의 데이터 타입은 `Boolean`, `Number` 같은 <b>원시 값</b>을 제외하고는 모두 <b style="color: red">객체</b>로 분류된다.  

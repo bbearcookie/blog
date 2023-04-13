@@ -3,9 +3,9 @@ title: "순열과 조합"
 date: 2023-03-07
 update: 2023-03-07
 tags:
-  - algorithm
-  - permutation
-  - combination
+  - Algorithm
+  - Permutation
+  - Combination
 ---
 
 알고리즘 문제를 풀다보면 경우의 수를 순회해야 하는 경우가 있는데  

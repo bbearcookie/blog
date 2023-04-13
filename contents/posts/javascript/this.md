@@ -4,6 +4,7 @@ date: 2023-03-06
 update: 2023-03-06
 tags:
   - JavaScript
+  - this
 ---
 
 자바스크립트에서의 모든 함수는 <b style="color: red">this</b>라는 객체를 가지고 있다.  

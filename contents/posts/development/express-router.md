@@ -5,6 +5,7 @@ update: 2023-03-12
 tags:
   - development
   - express
+series: "Express를 사용한 프로젝트 코드 구조 리팩토링"
 ---
 
 Express.js의 Router 기능을 통해서 라우팅 경로를 지정하는데 의도치 않은 상황을 겪은 적이 있다.  

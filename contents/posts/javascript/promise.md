@@ -4,6 +4,7 @@ date: 2023-03-08
 update: 2023-03-08
 tags:
   - JavaScript
+  - Promise
 ---
 
 ## ES6 이전의 비동기 처리

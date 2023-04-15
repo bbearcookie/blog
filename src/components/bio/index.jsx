@@ -95,7 +95,7 @@ const Bio = () => {
           <Link link={github}>
             <FaGithub />
           </Link>
-          <Link link={kaggle}>
+          {/* <Link link={kaggle}>
             <FaKaggle />
           </Link>
           <Link link={instagram}>
@@ -112,7 +112,7 @@ const Bio = () => {
           </Link>
           <Link link={etc}>
             <FaLink />
-          </Link>
+          </Link> */}
         </LinksWrapper>
       </div>
     </BioWrapper>

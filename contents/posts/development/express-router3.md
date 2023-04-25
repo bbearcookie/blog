@@ -1,19 +1,22 @@
 ---
-title: "서비스 로직 비동기 병렬 처리"
-date: 2023-03-24
-update: 2023-03-24
+title: "데이터베이스 관련 코드 개선"
+date: 2023-03-25
+update: 2023-04-25
 tags:
   - development
-  - express
+  - mysql
   - promise
-series: "Express를 사용한 프로젝트 코드 구조 리팩토링"
+series: "Express 서버 프로젝트 리팩토링"
 ---
 
-`Node.js` 기반의 사이드 프로젝트에서 `MySQL` 데이터베이스를 사용하게 해주는 모듈이자 Promise 기반의 API를 제공하는 `mysql2` 모듈을 사용했다.  
-커넥션 풀에 미리 여러 커넥션을 생성해 놓고, 각 서비스 로직에서 필요할 때 커넥션을 받아와 사용하고 사용이 끝났으면 반환하는 방식을 사용했는데 기존에 작성했던 서비스 로직의 코딩 스타일에 몇 가지의 개선해야 할 점이 보여서 새롭게 개선하게 되었다.
+## 문제 상황
+`Node.js` 환경에서 `MySQL` 이나 `mariaDB` 데이터베이스에 접근할 수 있는 클라이언트이자 `Promise` 기반의 기능을 지원하는 `mysql2`를 사용해서 직접 `SQL`문을 작성하는 방식으로 로직을 작성하고 있었다.
 
-## 기존 코드
+그런데 기존에 작성하던 방식에서 다음 문제를 발견했다.
+> 1. 커넥션 객체를 받아오는 `getConnection()` 은 예외가 발생할 가능성이 있는 코드인데 `try` 문의 바깥에 작성하고 있었다.
+> 2. 특정 함수에서 `SQL` 문을 여러 번 실행해야 하는 경우가 있는데, 실행 순서가 상관이 없는 경우에도 `async-await` 구문으로 무조건 요청을 대기하고 있었다. 이는 병렬 처리를 하는 편이 효율적이다.
 
+### 문제 예시
 ```ts
 // 교환글 수정
 export const putTrade = async ({ trade, voucherId, amount, wantPhotocardIds }:
@@ -26,35 +29,24 @@ export const putTrade = async ({ trade, voucherId, amount, wantPhotocardIds }:
     let sql;
 
     // 기존 소유권 상태를 available로 변경
-    sql = `
-    UPDATE Voucher
-    SET state=${con.escape('available')}
-    WHERE voucher_id=${con.escape(trade.voucherId)}`
+    sql = `...`;
     await con.execute(sql);
 
     // 기존 wantPhotocard 모두 제거
-    sql = `DELETE FROM TradeWantcard WHERE trade_id=${trade.tradeId}`
+    sql = `...`;
     await con.execute(sql);
 
     // 새로운 소유권 사용상태 변경
-    sql = `
-    UPDATE Voucher
-    SET state=${con.escape('trading')}
-    WHERE voucher_id=${con.escape(voucherId)}`
+    sql = `...`;
     await con.execute(sql);
 
     // 교환글 수정
-    sql = `
-    UPDATE Trade
-    SET voucher_id=${con.escape(voucherId)}
-    WHERE trade_id=${con.escape(trade.tradeId)}`
+    sql = `...`;
     await con.execute(sql);
 
     // 교환글이 원하는 포토카드 정보 작성
     for (let photoId of wantPhotocardIds) {
-      sql = `
-      INSERT INTO TradeWantcard (trade_id, photocard_id)
-      VALUES (${con.escape(trade.tradeId)}, ${con.escape(photoId)})`;
+      sql = `...`;
       await con.execute(sql);
     }
     
@@ -68,11 +60,9 @@ export const putTrade = async ({ trade, voucherId, amount, wantPhotocardIds }:
 }
 ```
 
-기존의 코드를 살펴 보면 다음과 같은 부분을 개선해 볼 수 있다.
-> 1. 커넥션 객체를 `try` 블록의 외부에서 받아오고 있는데, 이 과정에서 에러가 발생할 가능성이 있으므로 `db.getConnection()`을 `try` 블록의 내부로 옮기는 편이 좋다.  
-그런데 `catch` 블록과 `finally` 블록에서의 `con` 객체는 비어있기 때문에 ES2020부터 등장한 `Optional Chaining` 연산자를 활용해서 `rollback()`과 `release()`를 처리한다.
-> 2. `con.execute()`를 여러번 실행하고 있는데 이 비동기 처리는 순서가 중요하지 않음에도 불구하고 `await`을 이용하여 다른 비동기 처리가 끝날때까지 비효율적으로 기다리게 된다.  
-그래서 각자의 비동기 처리를 병렬적으로 하는 `Promise` 객체를 만들고, `Promise.all()` 를 사용해서 모든 비동기 처리가 끝날 때까지 기다리게 개선한다.
+## 해결 방법
+1. 커넥션 객체를 초기에는 `undefined` 인 상태로 놓고 `try` 블록 안에서 커넥션 객체를 받아온다. `catch` 나 `finally` 에서는 ES2020 에서 등장한 `Optional Chaining` 연산자를 이용해서 커넥션 객체가 존재할 때에만 `rollback()`이나 `release()`를 실행하게 한다.
+2. `SQL` 구문의 실행 순서가 중요하지 않은 경우에는 각 요청을 수행하는 `Promise` 객체를 만들어서 병렬로 처리하게 하고, `Promise.all()` 함수를 이용해서 모든 요청이 정상적으로 수행된 경우에 결과를 `commit()` 한다.
 
 ## 수정된 코드
 
@@ -82,17 +72,9 @@ import { PoolConnection } from 'mysql2/promise';
 import { TradeDetail } from '@type/trade';
 
 // 교환글 수정
-export const updateTrade = async ({
-  trade, 
-  voucherId, 
-  amount, 
-  wantPhotocardIds
-}: {
-  trade: TradeDetail;
-  voucherId: number;
-  amount: number;
-  wantPhotocardIds: number[];
-}) => {
+export const putTrade = async ({ trade, voucherId, amount, wantPhotocardIds }:
+  { trade: TradeType; voucherId: number; amount: number; wantPhotocardIds: number[]; }
+) => {
   let con: PoolConnection | undefined;
 
   try {
@@ -102,51 +84,28 @@ export const updateTrade = async ({
     // 기존 소유권 상태를 available로 변경
     const updateExistingVoucher = new Promise((resolve, reject) => {
       if (!con) return reject(new Error('undefined db connection'));
-
-      let sql = `
-      UPDATE Voucher
-      SET
-        state=${con.escape('available')}
-      WHERE voucher_id=${con.escape(trade.voucherId)}`
-
+      let sql = `...`;
       con.execute(sql).then(resolve).catch(reject);
     });
 
     // 새로운 소유권 사용상태 변경
     const updateNewVoucher = new Promise((resolve, reject) => {
       if (!con) return reject(new Error('undefined db connection'));
-
-      let sql = `
-      UPDATE Voucher
-      SET
-        state=${con.escape('trading')}
-      WHERE voucher_id=${con.escape(voucherId)}`
-
+      let sql = `...`;
       con.execute(sql).then(resolve).catch(reject);
     });
 
     // 기존 wantPhotocard 모두 제거
     const deleteExistingWantcard = new Promise((resolve, reject) => {
       if (!con) return reject(new Error('undefined db connection'));
-      
-      let sql = `
-      DELETE FROM TradeWantcard
-      WHERE trade_id=${trade.tradeId}`
-
+      let sql = `...`;
       con.execute(sql).then(resolve).catch(reject);
     });
 
     // 교환글 수정
     const updateTrade = new Promise((resolve, reject) => {
       if (!con) return reject(new Error('undefined db connection'));
-
-      let sql = `
-      UPDATE Trade
-      SET
-        voucher_id=${con.escape(voucherId)},
-        amount=${con.escape(amount)}
-      WHERE trade_id=${con.escape(trade.tradeId)}`
-
+      let sql = `...`;
       con.execute(sql).then(resolve).catch(reject);
     });
 
@@ -154,16 +113,7 @@ export const updateTrade = async ({
     const insertWantcards = wantPhotocardIds.map(photocardId => (
       new Promise((resolve, reject) => {
         if (!con) return reject(new Error('undefined db connection'));
-
-        let sql = `
-        INSERT INTO TradeWantcard(
-          trade_id,
-          photocard_id
-        ) VALUES (
-          ${con.escape(trade.tradeId)},
-          ${con.escape(photocardId)}
-        )`;
-
+        let sql = `...`;
         con.execute(sql).then(resolve).catch(reject);
       })
     ));

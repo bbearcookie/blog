@@ -7,8 +7,9 @@ tags:
   - Queue
 ---
 
-# 큐
-큐(Queue)는 먼저 들어간 데이터가 먼저 나오는 `FIFO(First In First Out)` 형태의 자료구조이다.  
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Data_Queue.svg/330px-Data_Queue.svg.png" alt="큐">
+
+**큐(Queue)**는 먼저 들어간 데이터가 먼저 나오는 `FIFO(First In First Out)` 형태의 자료구조이다.  
 보통 예약이 먼저 걸려있는 작업부터 순차적으로 실행해야 하는 경우거나, BFS 알고리즘과 같은 곳에서 활용하기 좋다.
 
 ## 구현 방법
@@ -183,6 +184,9 @@ LinkedListQueue_shift: 7.626ms
 - 삭제: 연결 리스트 > 해쉬 >>>>> 배열
 
 배열을 큐처럼 사용한 경우가 삭제 연산에 있어서 매우 차이 날 정도로 느렸다.  
-코딩 테스트 문제를 풀다가 간혹 배열을 큐처럼 사용했을 때엔 통과하지 못했지만, 다른 방법을 선택할 때엔 통과하는 경우가 몇 번 있었다.
+그래서 코딩 테스트 문제를 풀다가 간혹 배열을 큐처럼 사용했을 때엔 통과하지 못했지만, 다른 방법을 선택할 때엔 통과하는 경우가 몇 번 있었다.
 
 이런 경우에는 재빠르게 큐를 직접 구현해서 사용하는 편이 좋겠다.
+
+## 참고 자료
+https://ko.wikipedia.org/wiki/%ED%81%90_%28%EC%9E%90%EB%A3%8C_%EA%B5%AC%EC%A1%B0%29

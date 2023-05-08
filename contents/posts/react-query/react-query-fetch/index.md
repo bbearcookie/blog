@@ -48,12 +48,19 @@ function Post() {
 }
 ```
 
-### enabled
+### 파라미터
+#### queryKey
+패칭한 데이터를 캐싱하는 데 사용하는 고유한 키이다. 쿼리 키가 변화하면 `useQuery` 는 해당 쿼리 키에 대한 데이터를 새롭게 반영한다.
+
+#### queryFn
+데이터를 패칭할 때 동작하는 함수이다. 보통은 서버에게 비동기 API 요청을 하는 코드를 작성한다.
+
+#### enabled
 `useQuery` 의 옵션으로 줄 수 있는 `boolean` 타입의 속성으로, 기본 값은 `true` 이다. 이 값이 `false` 이면 `useQuery` 선언을 만나도 API 요청이 자동으로 발생하지 않는다.   
 
 특정 쿼리가 실행되기 전에 다른 쿼리부터 수행해야 한다거나, 혹은 준비가 된 상태에서만 쿼리를 실행해야 하는 경우에 유용한 옵션이다.
 
-### keepPrevious
+#### keepPrevious
 `useQuery` 의 옵션으로 줄 수 있는 `boolean` 타입의 속성으로, 기본 값은 `false` 이다.  
 
 - `false`: 기존에 캐싱된 데이터가 있는 상태에서 `queryKey` 가 변경되어 새로운 데이터를 패치하게 되면, 기존의 `data` 는 `undefined` 가 되고 `status` 는 `loading` 상태가 된다.
@@ -63,22 +70,20 @@ function Post() {
 
 `UseQueryResult` 의 `isPreviousData` 로 이전의 데이터인지의 여부를 확인할 수 있다.
 
-### placeholderData
+#### placeholderData
 `useQuery` 의 옵션으로 줄 수 있는 `TData` 타입의 속성으로, 쿼리가 `loading` 상태일 때 임시로 보여줄 데이터이다.
 
-### initialData
+#### initialData
 `useQuery` 의 옵션으로 줄 수 있는 `TData` 타입의 속성으로, 쿼리 결과의 기본 값을 지정한다.
 
-### placeholderData와 initialData의 차이점
+#### placeholderData와 initialData의 차이점
 - `placeholderData`: **데이터가 캐시에 저장되지 않고**, 단순히 로딩 상태에 보여주기 위한 데이터이다. 그래서 `useQuery` 선언을 만났을 때 `staleTime` 이 존재해도 기존의 데이터가 없기 때문에 반드시 데이터 패칭이 발생한다.
 - `initialData`: **데이터가 캐시에 저장**된다. 따라서 `useQuery` 선언을 만났을 때 `staleTime` 이 존재한다면 기존의 데이터 `initialData` 가 `fresh` 인 상태이기 때문에 패칭이 발생하지 않는다.
 
-### select
+#### select
 `useQuery` 의 옵션으로 줄 수 있는 `TData` 타입의 속성으로, 서버로부터 받은 데이터를 변환하거나 일부만 추출하는 등의 전처리를 해서 `UseQueryResult` 의 `data` 로 저장되는 값을 설정할 수 있다. 단, 실제 캐싱되는 데이터 자체는 변하지 않는다.  
 
 `TypeScript` 를 사용하는 경우에는 `useQuery` 제네릭의 세 번째 변수에 실제 `data` 로 저장되는 값의 타입을 지정해줘야 한다.
-
-#### 예제 코드
 ```ts
 function Post() {
   const [postId, setPostId] = useState(1);

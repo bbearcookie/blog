@@ -42,6 +42,36 @@ tags:
 함수가 정의된 위치에 따라서 정적으로 스코프가 결정되는 방식이다.  
 `정적 스코프(Static Scope)` 라고도 하며 자바스크립트를 비롯한 대부분의 프로그래밍 언어가 채택하는 방식이다.
 
+## 스코프 체인
+모든 스코프는 자신의 상위 스코프로 연결되어 있는데 이를 `스코프 체인(Scope Chain)` 이라고 한다.  
+자바스크립트 엔진은 특정 식별자를 찾을 때 현재 스코프에서 먼저 찾고 없다면 상위 스코프로 올라가서 다시 찾는 과정을 반복한다.
+
+### 예시
+```js{12}
+// Global Execution Context
+var v0 = "v0"; // Global Scope
+let l0 = "l0"; // Local Scope
+
+// f1 Execution Context
+function f1() {
+  var v1 = "v1"; // f1 Local Scope
+  let l1 = "l1"; // f1 Local Scope
+  {
+    var v2 = "v2"; // f1 Local Scope
+    let l2 = "l2"; // Block Local Scope
+    console.log(v0);
+  }
+}
+
+f1();
+```
+
+위 코드에서 11번째 줄을 실행하면서 `v0` 을 찾는 과정은 다음과 같다:  
+
+1. `Block Scope` 에 `v0` 이 존재하지 않는다. 따라서 상위 스코프를 찾는다.
+2. `f1 Local Scope` 에 `v0` 이 존재하지 않는다. 따라서 상위 스코프를 찾는다.
+3. 전역 스코프에 `v0` 이 존재하므로 값을 가져온다.
+
 ## 참고 자료
 모던 자바스크립트 Deep Dive 13강 Scope  
 [Scope (computer science)](https://en.wikipedia.org/wiki/Scope_(computer_science))  

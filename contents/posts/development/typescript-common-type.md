@@ -7,9 +7,11 @@ tags:
   - TypeScript
 ---
 
-사이드 프로젝트를 진행하면서 TypeScript로 개발할 때 여러 타입에서 사용되는 공통 타입을 묶고, 세부 타입에서는 공통 타입의 일부 프로퍼티만 사용하고 싶은 경우에는 어떻게 해야 하는지 고민이 되었다.  
+## 프로퍼티의 중복
 
-처음에는 방법을 잘 모르기도 했고 각각의 타입에서 공통 타입으로 적용될 프로퍼티들은 과연 어떤 것들이 될지를 잘 가늠하지 못했어서 세부 타입마다 공통적으로 들어가는 키를 중복적으로 작성했는데 이를 비효율적으로 느꼈기에 개선해보고자 했다.
+`TypeScript`로 개발한 사이드 프로젝트에서 각 타입의 세부 프로퍼티를 일일이 입력하는 방식으로 타입을 정해줬었다.  
+
+이렇게 하니 여러 타입마다 중복되는 프로퍼티가 많이 발생했기 때문에 여러 타입에서 공통적으로 사용되는 프로퍼티를 하나의 **공통 타입**으로 묶고, 다른 타입에서는 해당 공통 타입을 <b style="color: red">**가져와 사용하는 방식**</b>으로 개선해 보자는 생각을 하게 되었다.
 
 
 ## 공통 타입을 정리하기 전
@@ -67,19 +69,11 @@ export interface TradeHistoryType {
 }
 ```
 
-위 타입을 보면 유사한 키가 반복적으로 들어가는 것을 볼 수 있는데 나는 이를 개선할 방법을 찾기로 했다.  
-우선 맨 처음으로 유사한 속성을 가진 키를 하나의 타입으로 묶는 것이었다. 이렇게 기본적인 타입을 지정하는건 크게 어렵지 않았는데, 만약 **세부 타입에서 공통 타입의 키를 사용하기는 사용하는데, 전체가 아닌 일부만 사용한다면** 어떻게 해야할지를 고민했다. 이에 대한 해결방법은 <b style="color: red">**Pick<Type, Keys> 유틸리티 타입**</b>을 사용하는 것 이었다.  
+위 타입을 보면 유사한 프로퍼티가 반복적으로 들어가고 있다.    
 
-```ts
-interface ShippingRequestItem {
-  payment: Pick<Payment, 'state' | 'amount'>;
-}
-```
+이를 개선하기 위해 가장 첫 번째로 해야할 것은 **유사한 속성을 가진 키를 하나의 공통 타입으로 묶는 것**이었다.
 
-사용 방법은 첫 번째 인자로 타입을 지정하고, 두 번째 인자로는 해당 타입에서 사용할 키만 Union 타입으로 묶어서 지정한다.
-만약 여러 키를 가진 `Payment` 타입 중에서 `state` 키와 `amount` 키만 사용하고 싶다면 위와 같이 하면 된다.
-
-## 공통 타입을 정리한 후
+## 공통 타입 정의
 ```ts
 // 사용자 타입
 export interface User {
@@ -118,7 +112,29 @@ export interface ShippingRequest {
   state: RequestState;
   writtenTime: string;
 }
+```
 
+이제 위 공통 타입에서 필요한 프로퍼티를 세부 타입에서 가져와 사용하면 된다.  
+
+그런데 문제점이 있었는데 만약 **세부 타입에서 공통 타입의 프로퍼티를 사용하기는 사용하는데, 전체가 아닌 일부만 사용하는 경우라면** 어떻게 해야하는지가 고민되었다.
+
+찾아보니 `TypeScript`에는 `유틸리티 타입`이라고 하는 것이 있었고, 이런 상황에는 <b style="color: red">**Pick<Type, Keys> 유틸리티 타입**</b>을 이용할 수 있었다.
+
+### Pick<Type, Keys>
+```ts
+interface ShippingRequestItem {
+  payment: Pick<Payment, 'state' | 'amount'>;
+}
+```
+
+위 예시는 `Payment` 타입 중에서 `state`와 `amount` 프로퍼티만 사용하는 경우이다.
+
+`Pick` 유틸리티 타입의 사용 방법은, **첫 번째 인자**로 *타입*을 주고, **두 번째 인자**로 *사용할 프로퍼티를 Union 타입으로 묶은 값*을 주면 된다.
+
+> 더 많은 유틸리티 타입에 대한 포스트는 [여기](/typescript-utility-type)
+
+## 공통 타입을 정리한 후
+```ts
 // 배송 요청 상세 타입
 export interface ShippingRequestDetail extends ShippingRequest {
   address: Pick<Address, 'recipient' | 'contact' | 'postcode' | 'address' | 'addressDetail' | 'requirement'>;
@@ -136,10 +152,14 @@ export interface ShippingRequestItem extends ShippingRequest {
 ```
 
 이렇게 공통 타입 `ShippingRequest`를 상속하고, 각각의 세부 키를 갖는 `ShippingRequestDetail` 과 `ShippingRequestItem` 같은 세부 타입을 작성했다.  
-이 세부 타입들은 데이터베이스를 핸들링하는 서비스 로직에서도 사용되는데 `SELECT` 문으로 가져올 때 어떻게 객체 안에 있는 프로퍼티의 형태로 가져올 수 있는지도 고민이었다.  
+
+이 세부 타입들은 데이터베이스를 핸들링하는 서비스 로직에서도 사용되는데, `SELECT` 문으로 가져올 때 데이터를 **어떻게 객체 형태로 가져올 수 있는지**도 고민이었다.
+
 이에 대한 해답은 `JSON_OBJECT()` 였다.  
 
 `SELECT` 문에 사용하면 값을 JSON 객체 형태로 묶어서 조회할 수 있다.
+
+### SELECT 문 예시
 
 ```sql
 SELECT
@@ -150,6 +170,8 @@ SELECT
   user_id as userId
 FROM User;
 ```
+
+### 실행 결과
 
 ```json
   "author": {

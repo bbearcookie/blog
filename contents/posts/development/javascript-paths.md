@@ -1,7 +1,7 @@
 ---
-title: "JavaScript, TypeScript 절대 경로 설정"
+title: "TypeScript 절대 경로 설정"
 date: 2023-05-01
-update: 2023-05-01
+update: 2023-05-19
 tags:
   - development
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Jest"
 date: 2023-05-19
-update: 2022-05-19
+update: 2022-05-20
 tags:
   - jest
 series: "테스팅을 위한 Jest"
@@ -34,10 +34,10 @@ series: "테스팅을 위한 Jest"
 npm i -D jest ts-jest @types/jest
 ```
 
-> `jest`: `Jest` 프레임워크 패키지이다.  
-> `ts-jest`: `TypeScript` 로 작성된 테스트 코드를 실행하기 위해 변환해주는 전처리기이다.  
-> `@types/jest`: `Jest` 에 대한 여러 타입 정의이다.  
-`@jest/globals` 패키지를 설치하는 방법도 있는데, 이 경우에는 `describe`, `test`, `expect` 등의 API를 직접 `import` 해서 사용해야 한다.
+> - **jest**: `Jest` 프레임워크 패키지이다.  
+> - **ts-jest**: `TypeScript` 로 작성된 테스트 코드를 실행하기 위해 변환해주는 전처리기이다.  
+> - **@types/jest**: `Jest` 에 대한 여러 타입 정의이다.  
+`@jest/globals` 패키지를 설치하는 방법도 있는데, 이 경우에는 describe, test, expect 등의 API를 직접 `import` 해서 사용해야 한다.
 
 ### 2. package.json 수정
 ```json
@@ -56,9 +56,9 @@ npm i -D jest ts-jest @types/jest
 npx ts-jest config:init
 ```
 
-`Jest` 를 사용하는데 있어서 기본적으로 설정은 필요하지 않지만 `ts` 파일을 자동으로 컴파일하지 않기 때문에 `.ts` 파일로 작성된 테스트 코드 파일에 대해서 `ts-jest` 가 변환해주도록 지시하는 설정 파일을 만들어야 한다.
+`Jest` 를 사용하는데 있어서 기본적으로 설정이 필요하지는 않지만, `ts` 파일을 자동으로 컴파일하지 않기 때문에 `.ts` 파일로 작성된 테스트 코드 파일에 대해서 `ts-jest` 가 변환해주도록 지시해야 한다.
 
-그렇기에 위 커맨드를 실행하면 자동으로 아래와 같은 `jest.config.js` 파일이 생성된다:
+그렇기 때문에 `jest.config.js` 설정 파일에 해당 내용을 적어줘야 하는데, 위 커맨드를 실행하면 자동으로 아래와 같은 파일이 생성된다.
 
 ```js
 /** @type {import('ts-jest').JestConfigWithTsJest} */
@@ -67,6 +67,49 @@ module.exports = {
   testEnvironment: 'node',
 };
 ```
+
+### Jest 기본 사용법
+
+#### 테스트 실행
+기본적으로 `Jest` 는 파일 이름이 `test.js` 나 `test.ts` 로 끝나는 경우에 테스트 파일이라고 인식하는데 `npm test` 커맨드를 실행하면 프로젝트 내에 존재하는 모든 테스트 파일을 실행한다.  
+
+만약 특정 파일만 실행하고 싶은 경우에는 `npm test <파일명 or 경로>` 커맨드를 실행하면 된다.
+
+#### 테스트 파일 작성
+```ts
+describe('테스트 영역 설명', () => {
+  test('테스트 설명', () => {
+    expect(검증 대상).Matcher(기대 결과)
+  });
+})
+```
+
+`Jest` 의 테스트 코드는 위와 같은 형식으로 작성한다.  
+
+- **describe**: 특정 테스트를 위해서 `test` 를 여러 번 호출하는 경우에는 유사한 `test` 를 같은 영역에 묶을 수 있다.  
+- **test**: 어떤 검증 대상에 대해서 기대 결과가 어떻게 되어야 하는지를 내부에 담고 있는 API이다. `it` 이라는 별칭으로 사용할 수도 있다.
+- **expect**: 어떤 값을 검증할 것인지 대상을 적어주는 API이다.
+- **Matcher**: 검증하려는 대상이 어떤 결과가 나와야 하는지를 적어주는 API이다. `toBe`, `toEqual`, `toBeTruthy` 등 많은 Matcher 가 존재하며 [API 문서](https://jestjs.io/docs/expect)에서 확인할 수 있다.
+
+#### 예시 코드
+
+```js
+/* sum.js */
+function sum(a, b) { return a + b; }
+module.exports = sum;
+```
+
+```js
+/* sum.test.js */
+const sum = require('./sum');
+
+test('adds 1 + 2 to equal 3', () => {
+  expect(sum(1, 2)).toBe(3);
+});
+```
+
+위 테스트 코드는 정의된 `sum` 함수에 대해서 테스트를 수행하며, `sum(1, 2)` 의 결과가 `3` 과 일치한지를 확인한다.
+
 
 
 

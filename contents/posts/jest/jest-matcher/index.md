@@ -68,5 +68,5 @@ test('use toThrow', () => {
 
 ## 참고 자료
 [API 문서](https://jestjs.io/docs/expect#matchers)  
-[Jest Basic - DaleSeo](https://www.daleseo.com/jest-basic/)  
-[Jest 기본 문법 정리 - Inpa](https://inpa.tistory.com/entry/JEST-%F0%9F%93%9A-jest-%EA%B8%B0%EB%B3%B8-%EB%AC%B8%EB%B2%95-%EC%A0%95%EB%A6%AC)  
+[Jest Basic (DaleSeo)](https://www.daleseo.com/jest-basic/)  
+[Jest 기본 문법 정리 (Inpa)](https://inpa.tistory.com/entry/JEST-%F0%9F%93%9A-jest-%EA%B8%B0%EB%B3%B8-%EB%AC%B8%EB%B2%95-%EC%A0%95%EB%A6%AC)  

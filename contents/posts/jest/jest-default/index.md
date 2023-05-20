@@ -118,5 +118,5 @@ test('adds 1 + 2 to equal 3', () => {
 [Jest 공식 페이지](https://jestjs.io/)  
 [Jest 공식 페이지 - Using TypeScript](https://jestjs.io/docs/getting-started#using-typescript)  
 [Jest 공식 페이지 - Jest Config File](https://kulshekhar.github.io/ts-jest/docs/getting-started/installation/#jest-config-file)  
-[Jest 소개 - Inpa](https://inpa.tistory.com/entry/JEST-%F0%9F%93%9A-jest-%EB%AC%B8%EB%B2%95-%EC%A0%95%EB%A6%AC)  
-[Jest Basic - DaleSeo](https://www.daleseo.com/jest-basic/)  
+[Jest 소개 (Inpa)](https://inpa.tistory.com/entry/JEST-%F0%9F%93%9A-jest-%EB%AC%B8%EB%B2%95-%EC%A0%95%EB%A6%AC)  
+[Jest Basic (DaleSeo)](https://www.daleseo.com/jest-basic/)  

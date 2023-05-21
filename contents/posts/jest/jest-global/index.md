@@ -1,7 +1,7 @@
 ---
 title: "Jest 전역 환경"
 date: 2023-05-20
-update: 2022-05-21
+update: 2022-05-20
 tags:
   - jest
 series: "테스팅을 위한 Jest"

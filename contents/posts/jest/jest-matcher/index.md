@@ -1,5 +1,5 @@
 ---
-title: "몇 가지의 유용한 Matcher"
+title: "Matcher"
 date: 2023-05-20
 update: 2022-05-20
 tags:
@@ -54,17 +54,18 @@ test("string", () => {
 ```
 
 ## toThrow
-검증 대상이 예외를 발생하는지를 알아보는데 사용한다.
+검증 대상이 예외를 발생하는지를 알아보는데 사용한다.  
+유의해야 할 점은 <b style="color: red">**`expect()` 함수에 넘기는 검증 대상을 함수로 한 번 감싸줘야 한다는 점이다!!!**</b> 감싸주지 않는다면 예외 발생 여부를 체크하는 게 아니라 테스트 실행 도중에 정말 그 예외가 발생하게 되어 버린다.
+
 ```ts
 function doThrow() {
   throw new Error('에러를 발생했습니다');
 }
 
 test('use toThrow', () => {
-  expect(doThrow()).toThrow(new Error('에러를 발생했습니다'));
+  expect(() => doThrow()).toThrow(new Error('에러를 발생했습니다'));
 });
 ```
-
 
 ## 참고 자료
 [API 문서](https://jestjs.io/docs/expect#matchers)  

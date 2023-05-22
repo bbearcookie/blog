@@ -22,7 +22,7 @@ series: "리액트 컴포넌트의 테스팅을 위한 React Testing Library"
 
 > **구현 세부 사항이란?**  
 사용자는 어떤 컴포넌트에 저장된 상태나 이름과 같은 정보는 관심이 없고 자신의 행동으로 변화하는 화면 자체에만 관심이 있을 뿐이다.  
-구현 세부 사항은 **사용자가 관심 없는 부분**들을 의미하며 컴포넌트 내부의 상태, 컴포넌트의 메소드, 메소드의 생명주기 등이 있다.
+구현 세부 사항은 **사용자가 관심 없는 부분**들을 의미하며 컴포넌트 내부의 상태, 컴포넌트의 메소드, 메소드의 생명주기 등이 이에 포함된다.
 
 > **구현 세부 사항에 의존한다면 생기는 문제점**  
 나중에 해당 컴포넌트를 리팩토링한다고 해보자.  
@@ -79,8 +79,7 @@ export default Counter;
 
 ### 테스트 코드
 ```tsx
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Counter from './Counter';
 
 describe('Counter test', () => {
@@ -88,13 +87,21 @@ describe('Counter test', () => {
     render(<Counter />);
 
     const target = screen.getByRole('button', { name: '+' });
-    userEvent.click(target); // + 버튼 클릭 이벤트 발생
+    fireEvent.click(target); // + 버튼 클릭 이벤트 발생
 
     expect(screen.getByText('1')).toBeInTheDocument(); // 화면에 1 이라는 내용을 텍스트로 가진 요소가 있는지 검사
     expect(screen.getByRole('banner').textContent).toBe('1'); // role이 banner인 요소의 내용이 '1' 인지 검사
   });
 });
 ```
+
+### 테스트 실행
+`npm test` 를 입력하면 `React Testing Library` 가 내부적으로 `jest` 를 `Watch` 모드로 실행한다.  
+
+`jest` 가 실행되고 있는 상황에는 핫 리로드 기능이 적용되기 때문에 컴포넌트나 테스트 코드의 내용에 변화가 발생한다면 테스트를 다시 수행한다.
+
+> **Watch 모드?**  
+마지막 커밋 이후에 변경이 발생한 파일과 연관된 테스트를 전부 수행한다.  
 
 
 ## 참고 자료

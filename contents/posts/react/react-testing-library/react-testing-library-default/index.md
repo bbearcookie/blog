@@ -4,7 +4,7 @@ date: 2023-05-22
 update: 2022-05-22
 tags:
   - react
-  - react-hook-form
+  - react-testing-library
 series: "리액트 컴포넌트의 테스팅을 위한 React Testing Library"
 ---
 

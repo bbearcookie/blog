@@ -42,10 +42,13 @@ series: "리액트 컴포넌트의 테스팅을 위한 React Testing Library"
 ### 테스트 단계
 `React Testing Library` 로 UI 컴포넌트를 테스트하는 과정은 다음과 같다:
 
-1. `render()` 로 컴포넌트를 가상 DOM에 그린다.  
-2. `get()` `query()` `find()` 와 같은 Query 를 이용해서 검사를 수행할 DOM 요소를 가져온다.  
-3. `fireEvent()` `userEvent()` 와 같은 이벤트 발생 API를 호출해서 DOM 요소에 이벤트를 발생시킨다.  
-4. `expect()` API 를 통해서 특정 DOM 요소에 대한 내용을 검사한다.  
+1. **ARRANGE**  
+`render()` 로 컴포넌트를 가상 DOM에 그린다.  
+2. **ACT**  
+`get()` `query()` `find()` 와 같은 Query 를 이용해서 검사를 수행할 DOM 요소를 가져온다.  
+그리고 `fireEvent()` `userEvent()` 와 같은 이벤트 발생 API를 호출해서 DOM 요소에 이벤트를 발생시킨다.  
+3. **ASSERT**  
+`expect()` API 를 통해서 특정 DOM 요소에 대한 내용을 검사한다.  
 
 ## 예시 코드
 내부적으로 `count` 상태를 가지고 있고 `+` 버튼과 `-` 버튼을 통해서 값을 1씩 증감하는 `Counter` 컴포넌트에 대한 테스트 코드의 예시이다.

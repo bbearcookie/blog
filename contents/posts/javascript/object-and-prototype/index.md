@@ -25,6 +25,9 @@ let kim = {
   showName: function() {
     console.log(`제 이름은 ${this.name} 입니다.`);
   }
+  showNameMethod() {
+    console.log(`제 이름은 ${this.name} 입니다.`);
+  }
 };
 ```
 

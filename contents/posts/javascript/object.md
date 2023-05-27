@@ -1,5 +1,5 @@
 ---
-title: "Object"
+title: "객체(Object)"
 date: 2023-05-27
 update: 2023-05-27
 tags:

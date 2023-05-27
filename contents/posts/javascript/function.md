@@ -1,5 +1,5 @@
 ---
-title: "함수"
+title: "함수(Function)"
 date: 2023-05-27
 update: 2023-05-27
 tags:

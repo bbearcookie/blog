@@ -128,7 +128,7 @@ lee.showName(); // 제 이름은 이미리 입니다.
 자바스크립트 엔진은 이런 과정을 거쳐서 프로퍼티를 찾는다:  
 1. 객체 자기 자신이 해당 프로퍼티를 가지고 있는지 찾는다.  
 2. `__proto__` 가 가리키는 자신의 프로토타입에서 찾는다.  
-3. `__proto__` 가 가리키는 상위 객체의 프로토타입에서 찾는다.  
+3. 자신의 프로토타입의 `__proto__` 가 가리키는 상위 객체의 프로토타입에서 찾는다.  
 4. 순차적으로 올라가면서 `Object.prototype` 까지 찾는다.  
 5. 없다면 `undefined` 를 반환한다.  
 
@@ -140,6 +140,11 @@ function Person(name, age) {
 }
 
 let kim = new Person("김철수", 20);
+let lee = new Person("이미리", 25);
+
+lee.hello = function () {
+  console.log("안녕하세요? 전 이미리에요.");
+}
 
 Person.prototype.hello = function () {
   console.log("안녕하세요?");
@@ -149,9 +154,10 @@ Object.prototype.bye = function () {
   console.log("잘가요~");
 }
 
-kim.hello(); // 안녕하세요? (Person의 프로토타입 객체에 존재하는 메소드)
-kim.bye(); // 잘가요~ (Object의 프로토타입 객체에 존재하는 메소드)
-console.log(kim.num); // undefined (Object까지 올라갔지만 발견하지 못한 프로퍼티)
+lee.hello(); // 안녕하세요? 전 이미리에요. (lee 객체에 존재하는 메소드)
+kim.hello(); // 안녕하세요? (Person의 프로토타입에 존재하는 메소드)
+kim.bye(); // 잘가요~ (Object의 프로토타입에 존재하는 메소드)
+console.log(kim.num); // undefined (Object의 프로토타입까지 올라갔지만 발견하지 못한 프로퍼티)
 ```
 
 ## 직접 상속

@@ -99,14 +99,20 @@ function Person(name, age) {
   this.age = age;
 }
 
-Person.prototype.showName = function () {
+// 정적 메소드
+Person.sayHello = function () { 
+  console.log("안녕하세요!");
+}
+
+// 인스턴스 메소드
+Person.prototype.showName = function () { 
   console.log(`제 이름은 ${this.name} 입니다.`);
 };
-
 
 let kim = new Person("김철수", 20);
 let lee = new Person("이미리", 25);
 
+Person.sayHello(); // 안녕하세요!
 kim.showName(); // 제 이름은 김철수 입니다.
 lee.showName(); // 제 이름은 이미리 입니다.
 ```
@@ -117,7 +123,6 @@ lee.showName(); // 제 이름은 이미리 입니다.
 `Person`의 프로토타입 객체에는 `constructor`가 자신을 생성한 `Person`객체를 가리킨다.
 
 ![](prototype.png)
-
 
 ## 프로토타입 체이닝
 자바스크립트에서 어떤 객체의 프로퍼티를 `num`을 참조하는 상황을 가정하면 먼저 객체 내부에 `num`이 존재하는지를 확인한다.  
@@ -142,7 +147,7 @@ Object.prototype.bye = function () {
 
 kim.hello(); // 안녕하세요? (Person의 프로토타입 객체에 존재하는 메소드)
 kim.bye(); // 잘가요~ (Object의 프로토타입 객체에 존재하는 메소드)
-console.log(kim.num); // undefined (프로토타입 체이닝을 통해 Object까지 올라갔지만 발견하지 못한 프로퍼티)
+console.log(kim.num); // undefined (Object까지 올라갔지만 발견하지 못한 프로퍼티)
 ```
 
 ## 상속

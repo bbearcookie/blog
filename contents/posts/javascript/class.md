@@ -113,7 +113,6 @@ class Rabbit extends Animal {
 - **super() 호출**: 상위 클래스의 생성자를 호출한다.  
 - **super.상위메소드() 참조**: 상위 클래스의 메소드를 호출한다.  
 
-
 ## 참고 자료
 모던 자바스크립트 Deep Dive 25장 클래스  
 [클래스 (코어 자바스크립트)](https://ko.javascript.info/classes)  

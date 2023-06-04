@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, Fragment } from "react"
 import styled from "styled-components"
 import _ from "lodash"
 
@@ -75,7 +75,7 @@ const SeriesList = ({ seriesList }) => {
     <SeriesListWrapper>
       {seriesList.slice(0, seriesCount).map((series, i) => {
         return (
-          <>
+          <Fragment key={series.name}>
             <SeriesWrapper>
               <Title size="bg">
                 <Link to={`/series/${_.replace(series.name, /\s/g, "-")}`}>
@@ -92,7 +92,7 @@ const SeriesList = ({ seriesList }) => {
             {seriesCount - 1 !== i && seriesList.length - 1 !== i && (
               <Divider mt="48px" mb="32px" />
             )}
-          </>
+          </Fragment>
         )
       })}
     </SeriesListWrapper>

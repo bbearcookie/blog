@@ -1,6 +1,6 @@
 ---
 title: "쿼리 키와 쿼리 함수"
-date: 2023-05-06
+date: 2023-05-06 01:00
 update: 2022-05-06
 tags:
   - react-query

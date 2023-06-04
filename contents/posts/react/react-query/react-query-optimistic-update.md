@@ -1,6 +1,6 @@
 ---
 title: "낙관적 업데이트(Optimistic Update)"
-date: 2023-05-08
+date: 2023-05-08 01:00
 update: 2022-05-08
 tags:
   - react-query

@@ -1,6 +1,6 @@
 ---
 title: "Tanstack Query(React Query)"
-date: 2023-05-06
+date: 2023-05-06 00:00
 update: 2022-05-06
 tags:
   - react-query

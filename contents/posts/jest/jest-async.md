@@ -1,7 +1,7 @@
 ---
 title: "비동기 코드 테스트"
-date: 2023-05-20
-update: 2022-05-20
+date: 2023-05-20 02:00
+update: 2022-05-20 02:00
 tags:
   - jest
 series: "테스팅을 위한 Jest"

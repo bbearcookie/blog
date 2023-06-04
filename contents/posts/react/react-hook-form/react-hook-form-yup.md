@@ -1,6 +1,6 @@
 ---
 title: "Yup 라이브러리 연동"
-date: 2023-05-18
+date: 2023-05-18 04:00
 update: 2022-05-18
 tags:
   - react

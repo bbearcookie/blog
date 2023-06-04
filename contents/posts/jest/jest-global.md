@@ -1,6 +1,6 @@
 ---
 title: "Jest 전역 환경"
-date: 2023-05-20
+date: 2023-05-20 02:00
 update: 2022-05-20
 tags:
   - jest

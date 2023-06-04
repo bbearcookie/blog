@@ -1,6 +1,6 @@
 ---
 title: "서버의 데이터 가져오기"
-date: 2023-05-07
+date: 2023-05-07 00:00
 update: 2022-05-07
 tags:
   - react-query

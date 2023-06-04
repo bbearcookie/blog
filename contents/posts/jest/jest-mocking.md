@@ -1,6 +1,6 @@
 ---
 title: "모킹(Mocking)"
-date: 2023-05-21
+date: 2023-05-21 01:00
 update: 2022-05-21
 tags:
   - jest

@@ -1,6 +1,6 @@
 ---
 title: "서버의 데이터 변형하기"
-date: 2023-05-08
+date: 2023-05-08 00:00
 update: 2022-05-08
 tags:
   - react-query

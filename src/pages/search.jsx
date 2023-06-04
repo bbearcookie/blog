@@ -20,7 +20,6 @@ const SearchWrapper = styled.div`
 
 const Search = ({ data }) => {
   const posts = data.allMarkdownRemark.nodes
-
   const [query, setQuery] = useState("")
 
   const filteredPosts = useCallback(
@@ -70,6 +69,7 @@ export const pageQuery = graphql`
           title
           tags
         }
+        id
         rawMarkdownBody
       }
     }

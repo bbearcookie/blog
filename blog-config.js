@@ -11,7 +11,7 @@ module.exports = {
     email: "mailto:grabiticlaris@gmail.com",
   },
   utterances: {
-    repo: "devHudi/gatsby-starter-hoodie",
+    repo: "bbearcookie/blog",
     type: "pathname",
   },
 }

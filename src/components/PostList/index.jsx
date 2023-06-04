@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, Fragment } from "react"
 import styled from "styled-components"
 import _ from "lodash"
 
@@ -71,11 +71,12 @@ const PostList = ({ postList }) => {
     <PostListWrapper>
       {postList.slice(0, postCount).map((post, i) => {
         const { title, date, tags } = post.frontmatter
+        const { id } = post;
         const { excerpt } = post
         const { slug } = post.fields
 
         return (
-          <>
+          <Fragment key={id}>
             <PostWrapper>
               <Title size="bg">
                 <Link to={slug}>{title}</Link>
@@ -88,7 +89,7 @@ const PostList = ({ postList }) => {
             {postCount - 1 !== i && postList.length - 1 !== i && (
               <Divider mt="48px" mb="32px" />
             )}
-          </>
+          </Fragment>
         )
       })}
     </PostListWrapper>

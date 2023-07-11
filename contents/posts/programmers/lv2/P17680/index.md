@@ -13,7 +13,7 @@ https://school.programmers.co.kr/learn/courses/30/lessons/17680
 ![](./description.png)
 
 ### 아이디어
-큐를 활용해서 푸는 문제이다.  
+큐를 활용해서 풀었다.  
 
 > 우선 엣지 케이스부터 정리해야 하는데  
 > 1. 캐시 크기가 0이면 그냥 **도시 갯수 * 5** 를 반환하면 된다.  

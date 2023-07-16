@@ -101,8 +101,6 @@ lee.showName(); // 제 이름은 이미리 입니다.
 자신의 상위 객체의 프로토타입인 `Function.prototype` 을 가리킨다.
 - **prototype**  
 자신의 프로토타입인 `Person.prototype` 을 가리킨다.
-- **constructor**  
-자신의 상위 객체인 `Function` 을 가리킨다.
 
 #### Person.prototype 에 포함된 프로퍼티
 - **\_\_proto\_\_**  

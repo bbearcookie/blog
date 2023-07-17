@@ -7,7 +7,7 @@ tags:
 ---
 
 ## 문제
-https://school.programmers.co.kr/learn/courses/30/lessons/17680
+https://school.programmers.co.kr/learn/courses/30/lessons/42885
 
 ![](./description.png)
 

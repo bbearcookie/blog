@@ -5,6 +5,7 @@ update: 2023-07-05
 tags:
   - devcourse
   - mil
+series: '데브코스 월간 회고'
 ---
 
 ![](./programmers.jpg)

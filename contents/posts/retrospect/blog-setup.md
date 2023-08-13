@@ -23,8 +23,8 @@ tags:
 따라서 시스템에 여러 개의 Node.js 버전을 설치해서 사용할 수 있는 `NVM(Node Version Manager)`를 이용했다.  
 
 > **nvm ls**: 시스템에 설치된 노드의 버전 목록 확인  
-> **npm install &lt;version&gt;**: 특정 버전의 노드 설치  
-> **npm uninstall &lt;version&gt;**: 시스템에 설치된 특정 버전의 노드 삭제   
+> **nvm install &lt;version&gt;**: 특정 버전의 노드 설치  
+> **nvm uninstall &lt;version&gt;**: 시스템에 설치된 특정 버전의 노드 삭제   
 > **nvm use &lt;version&gt;**: 시스템에 설치된 특정 버전의 노드 사용  
 
 이번에 노드 버전 `14.19.3`을 이용했는데 프로젝트에 사용되는 관련 모듈을 설치하는 명령어인 `npm install`을 입력하는 과정중에 다음과 같은 에러가 발생했다.

@@ -91,12 +91,74 @@ error: TS5023: Unknown compiler option 'allowImportingTsExtensions'.
 }
 ```
 
+### 배포 설정
+위 과정을 거치면 vercel 로컬서버는 실행할 수 있지만, 실제 배포한 이후에는 라우팅한 페이지에서 새로고침하면 `404` 에러가 발생한다는 문제가 있다.
+
+#### 1. vercel.json 설정
+```json
+{
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
+```
+
+vercel 서버에서 상세 `path` 로 들어가면 `/index.html` 파일을 사용하도록 설정한다.  
+그런데 이렇게 하면 `npm run vercel` 로 vercel 로컬서버를 실행했을 때 서버리스 함수가 정상적으로 작동하지 않게 된다. 그래서 `vite` 개발서버에 추가적인 설정이 필요하다.  
+
+#### 2. vite.config.ts 설정
+```ts
+import { defineConfig } from 'vite';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  server: {
+    proxy: {
+      '/api': { target: 'http://localhost:2999' }
+    }
+  }
+});
+```
+
+vite 개발서버에서 발생한 `/api/*` 경로에 대한 네트워크 요청을 vercel 개발서버로 대체하는 설정이다.  
+
+#### 3. 개발서버 동시 실행
+터미널을 두 개 열어서 vercel 개발서버, vite 개발서버를 각각 실행하고  
+브라우저로 vite 개발서버 주소로 들어가면 정상적으로 작동은 하는데 매번 수동으로 키기가 번거롭다.  
+그래서 `concurrently` 라이브러리를 사용해서 한 커맨드로 동시에 두 서버를 실행할 수 있다.  
+
+- **패키지 설치**  
+```sh
+npm i -D concurrently
+```
+
+- **package.json 설정**
+```json
+{
+  "scripts": {
+    "dev": "concurrently npm:watch-*",
+    "watch-vite": "vite",
+    "watch-vercel": "vercel dev --listen 2999",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+}
+```
+
+- **개발 서버 병렬 실행**
+```sh
+npm run dev
+```
+
+두 개발 서버를 실행하고, 브라우저로 vite 개발서버 주소로 들어가면 정상 작동한다!  
+
 ### 무한 스크롤
-![무한 스크롤](./scroll.png)
+![무한 스크롤](./scroll.png)  
+
 라이브러리를 사용하지 않고 `Insersection API` 만 사용해서 무한 스크롤 기능을 구현했다. 
 
 영화 목록의 마지막 부분에 도달하면 다음 목록을 자동으로 가져오는 기능을 구현했는데, `isLoading` 상태가 아닌 경우에는 더보기 아이콘을 보여줌으로써 혹시 무한 스크롤이 잘 작동하지 않는 경우에는 사용자가 직접 불러올 수 있도록 했다.  
-
 
 ### 서버상태 관리
 서버로부터 가져오는 정보는 `pinia` 라이브러리를 통한 스토어에 저장했다.  
@@ -111,6 +173,8 @@ error: TS5023: Unknown compiler option 'allowImportingTsExtensions'.
 `Tailwind CSS` 도 처음 사용해봤는데 Vue의 `Transition` 컴포넌트와 관련한 기능이나, 기타 복잡한 선택자 관계를 표현하기 위해서는 결국 `scss` 도 함께 사용해야 된다고 느껴져서 사실 매력을 잘 못느꼈다.  
 
 `Tailwind` 의 장점이라고 한다면 요소의 클래스만 보고도 어떤 화면이 나올지 예측이 가능하다는 점이 있고, 클래스 네이밍을 고민하는데 많은 시간을 보내지 않아도 되는 점이겠지만, 개인적으로는 `HTML` 트리 구조만 보고 전체적인 구조를 파악하기에는 클래스 이름이 너무 길어지는 느낌이 있어서 시맨틱 태그나 CSS 네이밍 방법론을 잘 정리해서 사용하는 것이 유지보수에 더 좋지 않을까 싶은 생각이 들었다.  
+
+또한 서버리스 함수를 어떤 상황에서 유용한지를 경험하게 되었다.  
 
 사실 나는 `Vue` 보다는 `React` 에 더 관심이 있기 때문에 `Vue` 에 대해서 더 깊은 학습을 하는 것에는 중점을 두진 않을 것 같긴 하지만, 한 번쯤 써보고 싶기도 했고 `Vue` 만의 장점도 느낀 나름 새로운 경험을 하게 되어서 뿌듯하다.  
 

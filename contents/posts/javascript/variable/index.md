@@ -1,14 +1,14 @@
 ---
 title: "변수와 메모리"
 date: 2023-06-02
-update: 2023-06-03
+update: 2023-06-16
 tags:
   - JavaScript
   - Hoisting
 ---
 
 ## 변수
-변수는 **하나의 값을 저장하기 위해 확보한 메모리 공간** 또는 메모리 공간을 식별하기 위해 붙인 이름이다. 특히 변수의 이름은 식별자라고도 한다.  
+변수는 **하나의 값을 저장하기 위해 확보한 메모리 공간** 또는 메모리 공간을 식별하기 위해 붙인 이름이다. 특히 변수의 이름은 식별자라고 부를 수 있다.  
 > **식별자**  
 어떤 값을 구별해서 식별할 수 있는 고유한 이름
 
@@ -24,7 +24,7 @@ var name; // 선언
 ### 초기화
 변수의 **초기 값을 저장**하는 단계이다.  
 호이스팅시 `var` 는 `undefined` 로 초기화되고,  
-`let` 과 `const` 는 초기화가 발생하지 않는다. 
+`let` 과 `const` 는 초기화가 발생하지 않는다.  
 ```js
 var name = "cookie"; // 초기화
 ```
@@ -123,21 +123,26 @@ func();
 
 `var` 로 선언한 변수는 함수의 스코프에, `let` 으로 선언한 변수는 블럭 개념의 스코프에 저장되고 있다.
 
+#### 암묵적 전역
+아무런 키워드를 주지 않고 변수를 정의하면, 그 변수는 전역 객체의 프로퍼티가 되어서 마치 전역 변수처럼 동작한다.  
+이런 현상을 **암묵적 전역**이라고 한다.  
+
 #### 예시 코드
-```js{9-12}
-var v = "global"; // global scope
+```js{9-13}
+var v = 'global'; // global scope
 
 function func() {
-  var v = "v"; // func scope
-  let l = "l"; // func scope
+  var v = 'v'; // func scope
+  let l = 'l'; // func scope
   console.log(v); // v
   console.log(l); // l
-  
+
   {
-    var v = "vv"; // func scope
-    let l = "ll"; // block scope
+    var v = 'vv'; // func scope
+    let l = 'll'; // block scope
+    g = 'I am global variable'; // global scope
   }
-  
+
   console.log(v); // vv
   console.log(l); // l
 }
@@ -212,5 +217,5 @@ console.log(lee); // { name: 'lee', age: 20 }
 ## 참고 자료
 모던 자바스크립트 Deep Dive 4장 변수  
 [호이스팅 (MDN)](https://developer.mozilla.org/ko/docs/Glossary/Hoisting)  
-[03. 원시 값과 객체는 메모리에 어떻게 저장되는가? 객체의 복제란? (좋아요 요정)](https://ji-u.tistory.com/21)  \
+[03. 원시 값과 객체는 메모리에 어떻게 저장되는가? 객체의 복제란? (좋아요 요정)](https://ji-u.tistory.com/21)  
 [[10분 테코톡] 📏 인치의 불변성](https://www.youtube.com/watch?v=eV4Yzssr9MA)  

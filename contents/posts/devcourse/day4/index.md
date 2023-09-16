@@ -1,5 +1,5 @@
 ---
-title: "[DAY 4~5] JavaScript 주요 문법 (3~4)"
+title: "[DAY 4-5] JavaScript 주요 문법 (3-4)"
 date: 2023-06-06
 update: 2023-06-07
 tags:

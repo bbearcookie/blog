@@ -11,7 +11,7 @@ tags:
 
 이게 꽤나 마음에 들어서 원래 사용하던 데스크탑도 윈도우 11로 업그레이드하고 포맷할 겸 동일하게 개발환경을 Ubuntu 기반으로 이사했는데, 그 과정에서 블로그 레포지토리를 받아서 글을 작성하려는데 이슈가 있어서 기록해보고자 한다.  
 
-## build-essential
+## 문제점
 `npm install` 로 패키지를 설치하려는데 특정 모듈(이미지 처리와 관련한 모듈인듯)을 설치하는 도중 다음과 같은 에러가 발생했다:
 
 ```sh
@@ -36,13 +36,13 @@ gyp ERR! not ok
 이건 Ubuntu에 build-essential 패키지가 설치되어 있지 않아서 발생하는 문제였다.  
 설치하려는 모듈 중에서 이 패키지에 의존하는 게 있는듯..
 
-### 해결책
-#### 1. build-essential 설치
+## 해결책
+### 1. build-essential 설치
 ```sh
 sudo apt-get install build-essential
 ```
 
-#### 2. 캐시 및 package-lock.json 리셋
+### 2. 캐시 및 package-lock.json 리셋
 
 ```sh
 rm -rf node_modules
@@ -53,6 +53,6 @@ npm install
 
 build-essential를 설치하고 깔끔하게 패키지와 캐시를 날려서 다시 인스톨했다.
 
-### 참고 자료
+## 참고 자료
 [[npm 오류] Error: not found: make](https://blog.uniony.me/nodejs/make-not-found/)  
 [WorkerError: failed to process image #21515](https://github.com/gatsbyjs/gatsby/issues/21515)  

@@ -387,6 +387,89 @@ function Fd() {
 }
 ```
 
+### Fragment
+
+`React.Fragment` 컴포넌트는 `jsx()` 함수의 첫 번째 인자로 Fragment로 표현된다.
+
+#### 실제 코드
+
+```tsx
+function Fragment() {
+  return (
+    <>
+      <>
+        <p>하하 Fragment</p>
+        <p>이런 느낌</p>
+      </>
+    </>
+  )
+}
+```
+
+#### 빌드 결과
+
+```js
+function Md() {
+  return te.jsx(te.Fragment, {
+    children: te.jsxs(te.Fragment, {
+      children: [
+        te.jsx("p", { children: "하하 Fragment" }),
+        te.jsx("p", { children: "이런 느낌" }),
+      ],
+    }),
+  })
+}
+```
+
+### 커스텀 컴포넌트
+
+컴포넌트가 반환하는 JSX 트리 중에 직접 정의한 함수 컴포넌트가 있다면, `jsx()` 함수의 첫 번째 인자로 그 함수 자체가 들어가게 된다.
+
+또한 props는 두 번째 인자인 `config` 로 전달되고 있다는 부분도 확인할 수 있다.
+
+#### 실제 코드
+
+```tsx
+function Text({ message, ...props }: { message: string }) {
+  return <p {...props}>{message}</p>
+}
+
+export default function Header() {
+  return (
+    <div className="header">
+      <Text message="헬로우" key="hi" />
+      <Text message="바이" key="bye" />
+    </div>
+  )
+}
+
+function App() {
+  return <Header />
+}
+```
+
+#### 빌드 결과
+
+```tsx
+function Hi({ message: e, ...n }) {
+  return En.jsx("p", { ...n, children: e })
+}
+
+function Od() {
+  return En.jsxs("div", {
+    className: "header",
+    children: [
+      En.jsx(Hi, { message: "헬로우" }, "hi"),
+      En.jsx(Hi, { message: "바이" }, "bye"),
+    ],
+  })
+}
+
+function Md() {
+  return En.jsx(Od, {})
+}
+```
+
 ## JSX.Element
 
 이 부분은 약간 동떨어진 이야기일 수도 있는데, 작성한 김에 함께 올려보고자 한다.

@@ -1,7 +1,7 @@
 ---
 title: "Express 기반의 프로젝트 셋업"
 date: 2023-10-03
-update: 2023-10-05
+update: 2023-10-08
 tags:
   - development
   - express
@@ -202,13 +202,9 @@ app.listen(5010, () => {
 ### src/types/express.d.ts 작성
 
 ```ts
-export {} // 이 구문이 없다면 에러가 발생하는데, 모듈이라고 인식을 못해서 그런거같다.
-
-declare global {
-  namespace Express {
-    interface Request {
-      accessToken?: string
-    }
+declare namespace Express {
+  export interface Request {
+    accessToken?: string
   }
 }
 ```

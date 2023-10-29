@@ -238,8 +238,8 @@ S3는 AWS에서 제공하는 일종의 클라우드 저장소이다.
 **Select Type of Policy**: `S3 Bucket Policy`  
 **Principal**: `*`  
 **Actions**: `GetObject`  
-**ARN**: 자신의 버킷 ARN에 마지막에 `/_`를 붙인 문자열  
-`ex) arn:aws:s3:::bearcookiestudy`
+**ARN**: 자신의 버킷 ARN에 마지막에 `/*`를 붙인 문자열  
+`ex) arn:aws:s3:::bearcookiestudy/*`
 
 적절한 정책을 입력했으면 Add Statement -> Generate Policy 버튼을 클릭해서 생성한다.
 

@@ -3,7 +3,6 @@ title: "리액트 프로젝트 AWS에 배포하기"
 date: 2023-10-22
 update: 2023-10-22
 tags:
-  - development
   - deployment
 series: "AWS에 배포하기"
 ---

@@ -124,59 +124,57 @@ ssh -i "bearcookiestudy.pem" ubuntu@ec2-43-201-21-102.ap-northeast-2.compute.ama
 
 Git, NVM, PM2, Nginx 등의 프로그램을 설치하기 위해서 몇 가지의 커맨드를 입력한다.
 
-#### 패키지 목록 업데이트
+### 각종 프로그램 설치
 
 ```sh
+### 1. 패키지 목록 업데이트
 sudo apt update
-```
 
-#### Nginx 설치
-
-```sh
+### 2. Nginx 설치
 sudo apt install nginx
-```
 
-#### Git 설치
-
-```sh
+### 3. Git 설치
 sudo apt install git
-```
 
-#### nvm 및 node 설치
-
-```sh
+### 4. nvm 설치
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+
 source ~/.bashrc
+
+### 5. node 설치
 nvm install --lts
-```
 
-#### pm2 설치
-
-```sh
+### 6. pm2 설치
 npm install pm2 -g
+
 pm2 install typescript
 ```
 
-#### MongoDB 설치
+### MongoDB 설치
 
 이 부분은 배포하려는 앱이 mongodb를 활용하기 때문에 설치했다!  
 [설치 가이드 공식 문서](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/)
 
 ```sh
+### 1.
 sudo apt-get install gnupg curl
 
+### 2.
 curl -fsSL https://pgp.mongodb.com/server-7.0.asc | \
    sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \
    --dearmor
 
+### 3.
 echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
 
+### 4.
 sudo apt-get update
 
+### 5.
 sudo apt-get install -y mongodb-org
 ```
 
-#### Nginx 실행 및 접속 확인
+## Nginx 실행
 
 다음과 같은 커맨드를 입력하고
 
@@ -267,3 +265,5 @@ server {
 ## 실행 확인
 
 ![Nginx 리버스 프록시 적용](image-15.png)
+
+EC2 인스턴스에 등록했던 퍼블릭 IP로 접속해보면 Express 앱이 잘 작동하고 있다는 것을 확인할 수 있다.

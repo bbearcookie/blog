@@ -1,7 +1,7 @@
 ---
 title: "Express 기반의 프로젝트 셋업"
 date: 2023-10-03
-update: 2023-10-08
+update: 2023-11-19
 tags:
   - development
   - express
@@ -18,7 +18,7 @@ tags:
 우선, TypeScript 기반으로 세팅할 것이니 관련된 패키지를 설치해보도록 하자.
 
 ```sh
-npm i typescript @types/node ts-node tsconfig-paths
+npm i -D typescript @types/node ts-node tsconfig-paths
 ```
 
 - **typescript**: 타입스크립트 패키지.
@@ -26,9 +26,9 @@ npm i typescript @types/node ts-node tsconfig-paths
 - **ts-node**: 타입스크립트 파일을 실행을 위한 패키지.
 - **tsconfig-paths**: `tsconfig.json` 에 정의된 `paths` 정보를 모듈이 읽을 수 있게 한다. path alias 기능으로 절대 경로를 지정해주고 싶어서 설치한다.
 
-> 🚨 주의!  
-> React같은 FE 환경에서는 `devDependencies` 에 설치했지만, Express같은 BE 환경에서는 일반 `dependencies` 에 설치해야 했었다. 왜냐하면 `devDependencies` 는 배포에 포함되지 않는 패키지이기 때문에 빌드가 안되는 문제가 생겼다. cloudtype 이라는 PaaS 서비스를 이용했었는데, 배포 환경마다 다를지는 아직 모르겠다.  
-> 물론 `husky`, `eslint`, `prettier` 와 같이 배포 환경에서는 전혀 사용되지 않는 패키지는 `devDependencies` 에 설치해도 좋다.
+<!-- > 🚨 주의!
+> React같은 FE 환경에서는 `devDependencies` 에 설치했지만, Express같은 BE 환경에서는 일반 `dependencies` 에 설치해야 했었다. 왜냐하면 `devDependencies` 는 배포에 포함되지 않는 패키지이기 때문에 빌드가 안되는 문제가 생겼다. cloudtype 이라는 PaaS 서비스를 이용했었는데, 배포 환경마다 다를지는 아직 모르겠다.
+> 물론 `husky`, `eslint`, `prettier` 와 같이 배포 환경에서는 전혀 사용되지 않는 패키지는 `devDependencies` 에 설치해도 좋다. -->
 
 ### tsconfig.json
 
@@ -91,7 +91,8 @@ app.listen(5010, () => {
 ```json
 {
   "scripts": {
-    "start": "ts-node -r tsconfig-paths/register src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js",
     "dev": "nodemon --watch src --exec ts-node -r tsconfig-paths/register src/app.ts"
   }
 }
@@ -99,10 +100,10 @@ app.listen(5010, () => {
 
 각 커맨드를 살펴보자면:
 
-1. **start**: `app.ts` 파일을 실행하되, Path Alias의 적용을 위해서 `tsconfig-paths` 모듈을 먼저 require 한다.  
-   배포 환경에서 실행할 땐 파일의 변화가 없으니 이 커맨드를 실행하려는 목적이다.
-2. **dev**: `src` 디렉토리 내부의 파일이 변경되면 `start` 스크립트의 내용을 그대로 다시 실행한다.
-   개발 환경에서는 소스 코드가 변경되면 반영하고 서버를 다시 실행하기 위한 목적이다.
+1. **build**: 타입스크립트 파일을 자바스크립트로 트랜스파일링한다.
+2. **start**: 빌드된 `dist/app.js` 파일을 실행한다.
+3. **dev**: `src` 디렉토리 내부의 파일이 변경되면 개발 서버를 다시 실행한다.  
+   Path Alias의 적용을 위해서 `tsconfig-paths` 모듈을 먼저 require 한다.
 
 ## Path Alias
 
@@ -118,6 +119,51 @@ app.listen(5010, () => {
     "paths": {
       "@/*": ["./*"]
     }
+  }
+}
+```
+
+### module-alias 설치
+
+```sh
+Error: Cannot find module '@/utils/calculator'
+Require stack:
+- /home/aodem/playground/express2/dist/app.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)
+    at Module._load (node:internal/modules/cjs/loader:922:27)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at Object.<anonymous> (/home/aodem/playground/express2/dist/app.js:8:20)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [ '/home/aodem/playground/express2/dist/app.js' ]
+}
+```
+
+개발 환경에서는 `tsconfig-paths` 패키지로 path alias 정보를 읽어서 실행할 수 있지만,  
+프로덕션 환경에서는 빌드된 `js` 파일을 실행해야 하는데 여전히 경로가 path alias 형태로 되어 있어서 실행이 불가능한 현상이 있다.
+
+그래서 `module-alias` 패키지를 설치하고 절대 경로를 인식할 수 있도록 설정해야 한다.
+
+#### 패키지 설치
+
+```sh
+npm i module-alias
+```
+
+#### package.json 수정
+
+```json
+{
+  "scripts": {
+    "start": "node -r module-alias/register dist/app.js"
+  },
+  "_moduleAliases": {
+    "@": "dist"
   }
 }
 ```

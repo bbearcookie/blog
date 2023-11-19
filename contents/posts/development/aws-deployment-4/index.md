@@ -261,6 +261,7 @@ EC2로 받아온 파일을 실행하는 `AfterInstall` 과정에서 커맨드를
 ![경로 확인](image-25.png)
 
 ```sh
+whereis npm
 whereis pm2
 whereis node
 ```
@@ -270,6 +271,7 @@ whereis node
 ##### 심볼릭 링크 추가
 
 ```sh
+sudo ln -s /home/ubuntu/.nvm/versions/node/v20.9.0/bin/npm /usr/bin/npm
 sudo ln -s /home/ubuntu/.nvm/versions/node/v20.9.0/bin/pm2 /usr/bin/pm2
 sudo ln -s /home/ubuntu/.nvm/versions/node/v20.9.0/bin/node /usr/local/bin/node
 ```

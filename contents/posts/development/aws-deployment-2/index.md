@@ -176,13 +176,11 @@ sudo apt-get install -y mongodb-org
 
 ## Nginx 실행
 
-다음과 같은 커맨드를 입력하고
+다음과 같은 커맨드를 입력하고 등록했던 퍼블릭 IP에 접속하면 Nginx 초기 화면이 나온다!
 
 ```sh
 sudo systemctl start nginx
 ```
-
-등록했던 퍼블릭 IP에 접속하면 Nginx 초기 화면이 나온다!
 
 ![접속 성공](image-12.png)
 

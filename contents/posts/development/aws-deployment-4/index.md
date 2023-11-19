@@ -409,3 +409,4 @@ sudo env PATH=$PATH:/home/ubuntu/.nvm/versions/node/v20.9.0/bin /home/ubuntu/.nv
 ![성공](image-29.png)
 
 이제 인스턴스가 재부팅되면 PM2에 자동으로 Express가 실행된 환경이 올라갈 것이다!
+또한, `CI` 스크립트에 작성했듯 `deploy` 브랜치에 새로운 내용이 올라오면 빌드 및 배포가 자동으로 되는 것도 확인할 수 있다.

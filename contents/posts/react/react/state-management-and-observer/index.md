@@ -227,7 +227,8 @@ class CounterStore extends Observable<number> {
 }
 ```
 
-공통된 부분과 구체적인 부분의 분리가 잘 이뤄져서
+공통 로직과 구체적인 로직의 분리가 이루어져서 CounterStore 에서는 자신의 상태를 변화시키는 액션만 가볍게 가질 수 있게 되었다.  
+또한 새로운 스토어를 만들 때도 `Observable` 클래스만 상속 받으면 되기 때문에 간편해졌다.
 
 ## React 18 미만에서는?
 

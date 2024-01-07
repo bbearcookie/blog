@@ -1,6 +1,6 @@
 ---
 title: "TS 컴파일러로 React 컴포넌트 빌드하기"
-date: 2024-01-07
+date: 2024-01-07 00:00
 update: 2024-01-07
 tags:
   - webpack

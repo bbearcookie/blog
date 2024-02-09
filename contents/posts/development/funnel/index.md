@@ -1,9 +1,9 @@
 ---
 title: "퍼널 컴포넌트로 페이지 흐름 관리하기"
 date: 2024-01-30
-update: 2024-01-30
+update: 2024-02-10
 tags:
-  - deployment
+  - development
 ---
 
 ## 서론
@@ -143,7 +143,7 @@ export default useFunnel
 > 💡 **컴포넌트를 반환하는 훅?**  
 > 커스텀 훅은 일반적으로 로직만 포함되는 곳으로 생각을 했었는데요, toss/slash의 [useFunnel](https://github.com/toss/slash/blob/main/packages/react/use-funnel/src/useFunnel.tsx#L57) 훅에서는 받았던 steps 배열로 타입을 유추해 `Funnel` **컴포넌트를 메모이제이션하여 반환**하는 형태로 구현되어 있었습니다. **(.tsx)**  
 > 이런 방식을 사용한 덕분에 각 Step 컴포넌트에서 스텝 타입을 제네릭으로 일일히 넣어주지 않아도 되는 장점이 있었고, 저도 유사한 방식을 시도했었습니다.  
-> 하지만 `framer-motion` 라이브러리의 종료 애니메이션이 적용되지 않았던 현상을 겪고 로직만 반환하는 형태로 구현하게 되었습니다.
+> 하지만 `framer-motion` 라이브러리의 `AnimatePresence` 가 적용되지 않았던 현상을 겪고 로직만 반환하는 형태로 구현하게 되었습니다.
 
 ## 퍼널 사용해보기
 

@@ -1,7 +1,7 @@
 ---
 title: "Webpack으로 번들링하기"
 date: 2024-01-07 01:00
-update: 2024-01-07
+update: 2024-02-10
 tags:
   - webpack
   - babel
@@ -242,7 +242,7 @@ export default {
 
 소스코드를 수정하고 저장하면 변경된 사항이 자동으로 화면에 반영되고 있음을 확인할 수 있다. 그런데 화면이 순간적으로 깜빡이는 현상이 있고 **모든 컴포넌트가 갖고 있던 기존의 상태도 함께 날아가버리는 문제점**이 있다.
 
-원인은 웹팩은 HMR을 적용해주지만, 화면을 그리는 건 리액트이기에 `main.tsx` 가 다시 실행되면서 모든 화면을 다시 렌더링하기 때문이라고 추측했다.
+원인은 웹팩은 HMR을 적용해주지만, 화면을 그리는 건 리액트이기에 `main.tsx` 가 다시 실행되면서 모든 화면을 다시 렌더링하기 때문이다.
 
 그렇다면 CRA로 구성한 프로젝트는 왜 컴포넌트가 상태를 잃지 않는 것일까? 이건 eject를 해서 확인해보니 `react-refresh` 라는 것을 사용하고 있었다.  
 웹팩과 함께 사용하기 위해서는 `react-refresh-webpack-plugin` 를 사용하면 편한데, 이 라이브러리는 [Babel을 통한 설정](https://github.com/pmmmwh/react-refresh-webpack-plugin?tab=readme-ov-file#usage)을 권장한다고 한다.

@@ -3,6 +3,7 @@ title: "EC2에 Nginx + Express 배포하기"
 date: 2023-11-18
 update: 2023-11-18
 tags:
+  - aws
   - deployment
 series: "AWS에 배포하기"
 ---

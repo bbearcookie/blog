@@ -3,6 +3,7 @@ title: "EC2에 https 적용하기"
 date: 2023-11-19 00:00
 update: 2023-11-19 00:00
 tags:
+  - aws
   - deployment
 series: "AWS에 배포하기"
 ---

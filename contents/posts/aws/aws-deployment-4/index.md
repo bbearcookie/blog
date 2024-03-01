@@ -3,6 +3,7 @@ title: "Github Action + AWS CodeDeploy로 배포 자동화하기"
 date: 2023-11-19 01:00
 update: 2023-11-19 01:00
 tags:
+  - aws
   - deployment
 series: "AWS에 배포하기"
 ---

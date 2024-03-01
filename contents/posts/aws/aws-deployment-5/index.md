@@ -3,6 +3,7 @@ title: "www로 호스트 통일하기"
 date: 2023-12-28
 update: 2023-12-28
 tags:
+  - aws
   - deployment
 series: "AWS에 배포하기"
 ---

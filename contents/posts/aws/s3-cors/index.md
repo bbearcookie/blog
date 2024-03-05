@@ -1,7 +1,7 @@
 ---
 title: "S3 버킷에 CORS 접근 허용하기"
 date: 2024-03-01
-update: 2024-03-01
+update: 2024-03-05
 tags:
   - aws
   - deployment
@@ -18,7 +18,7 @@ tags:
 
 이번 글에서는 간단하게 해결 방법을 기록해보고자 한다.
 
-### S3에 CORS 정책 추가하기
+## S3에 CORS 정책 추가하기
 
 [AWS 공식 문서](https://docs.aws.amazon.com/ko_kr/AmazonS3/latest/userguide/enabling-cors-examples.html?icmpid=docs_amazons3_console)를 살펴보면 크게 3가지의 방법이 있다고 하는데, 가장 간단한 S3 콘솔을 통한 설정을 적용해보자.
 
@@ -37,19 +37,37 @@ tags:
 
 ![S3 CORS](image.png)
 
-### Cloudfront에 헤더 설정하기
+### 추가 내용
 
-그런데 이미지 자원을 위해서 항상 S3 버킷에 접근하는 것 보다는 CDN을 통해 캐싱하는 것이 직접 비용과 속도 차원에서 더 좋아보인다.  
-그래서 Cloudfront를 이용했는데, 이 경우 Cloudfront에서도 요청/응답 헤더 설정을 해줘야 한다.  
-Cloudfront > 배포 > 동작 에서 관련 설정을 해준다.
+![alt text](image-2.png)
+
+그런데 며칠 후 다시 S3 버킷에 접근해보니 `Access-Control-Allow-Origin` 이 없다고 하는 현상이 나타났다.
+
+로컬 환경과 배포 환경이 있었는데, 재미있는 건 로컬 환경에서 실행한 앱에서는 요청이 실패하는데 배포 환경에서 실행한 앱에서는 요청이 성공했다.  
+그리고 배포 환경에서 요청이 성공한 이후에는 로컬 환경에서도 요청이 성공하게 된다.
+
+이 부분은 브라우저에 요청 결과가 캐싱이 되어서 그런건지, 혹은 Preflight 요청이 로컬 환경에서만 불가능했던건지 아리송하다.
+
+우선 개인적인 의심으로는 Preflight 요청이 제대로 되고 있지 않다고 판단했는데 S3 CORS 설정에서 `AllowedMethods` 필드에는 OPTIONS 메소드를 넣을 수 없길래, 그냥 Cloudfront를 거쳐서 처리하는 방식을 알아보기로 했다.
+
+## Cloudfront에 헤더 설정하기
+
+사실 S3 버킷에 직접 리소스를 요청하는 것 보다는 CDN을 통해서 캐싱하는 것이 비용 절감과 속도 차원에서도 유리하다보니 겸사겸사 Cloudfront를 사용했다.
+
+우리는 Cloudfront로 들어오는 크로스 오리진 요청에 대한 처리를 해줘야 하니, Cloudfront > 배포 > 동작 에서 관련 설정을 해준다.
 
 ![Cloudfront 헤더](image-1.png)
 
-> 요청 헤더: CORS-S3Origin 을 선택했다.  
-> 응답 헤더: SimpleCORS 를 선택했다.
+응답 헤더 정책에 CORS-With-Preflight 를 선택해준다.  
+참고로 이 설정은 아래와 같은 내용을 응답 헤더에 담아서 보내준다.
 
-설정을 마치면 Cloudfront를 무효화해서 설정이 즉시 반영될 수 있도록 한다.  
-(만약 여전히 설정이 반영이 안되어있다면, 잠시 캐시 정책을 `CachingDisabled` 로 설정해보는 것도 방법이다.)
+![Managed-CORS-With-Preflight](image-3.png)
+
+## 결과
+
+이제 이미지에 대한 ajax 요청이 정상적으로 처리되고 있음을 확인할 수 있다.
+
+![요청 결과](image-4.png)
 
 ## References
 
